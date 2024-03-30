@@ -7,7 +7,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CouvertureEvenementBackendApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(CouvertureEvenementBackendApplication.class, args);
+
+
 	}
+//	@Override
+//	public void run(String... args) throws Exception {
+//
+//	}
+
 
 }
