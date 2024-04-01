@@ -10,6 +10,7 @@ import java.util.List;
 @Service
 public class EvenementService {
 
+    @Autowired
     private EvenementRepository evenementRepository;
 
     public List<Evenement> getAllEvenement() {
