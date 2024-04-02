@@ -1,12 +1,12 @@
 package gl.back.couverture_evenementbackend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor
@@ -18,4 +18,8 @@ public class Prestation {
     private Long id_Prestation;
 
     private String libelle;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "prestations")
+    private List<Evenement> evenements;
 }

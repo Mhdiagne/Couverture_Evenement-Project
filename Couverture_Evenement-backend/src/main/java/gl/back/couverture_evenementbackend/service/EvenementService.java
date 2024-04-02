@@ -27,9 +27,8 @@ public class EvenementService {
 
     public Evenement updateEvenement(Long id, Evenement E) {
         if (evenementRepository.existsById(id)) {
-            Evenement updateE = getOneEvenement(id);
-            updateE.setId_Evenement(E.getId_Evenement());
-            return evenementRepository.save(updateE);
+            E.setId_Evenement(id);
+            return evenementRepository.save(E);
         }
         return null;
     }

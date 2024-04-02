@@ -28,9 +28,8 @@ public class PrestationService {
 
     public Prestation updateprestation(Long id, Prestation E) {
         if (prestationRepository.existsById(id)) {
-            Prestation updateE = getOnePrestation(id);
-            updateE.setId_Prestation(E.getId_Prestation());
-            return prestationRepository.save(updateE);
+            E.setId_Prestation(id);
+            return prestationRepository.save(E);
         }
         return null;
     }
