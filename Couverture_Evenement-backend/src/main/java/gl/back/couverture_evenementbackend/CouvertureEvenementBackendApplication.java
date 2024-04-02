@@ -14,8 +14,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import gl.back.couverture_evenementbackend.entity.Prestataire;
+import gl.back.couverture_evenementbackend.service.prestataireService;
+
+
 @SpringBootApplication
 public class CouvertureEvenementBackendApplication implements CommandLineRunner {
+
+  @Autowired
+	private prestataireService pService;
 
 	@Autowired
 	private EvenementRepository evenementRepository;
@@ -64,8 +71,16 @@ public class CouvertureEvenementBackendApplication implements CommandLineRunner 
 
 		Prestation prestation5 = new Prestation();prestation5.setLibelle(" Sonorisation");
 		prestationRepository.saveAll(Arrays.asList(prestation5,prestation1,prestation2,prestation3,prestation4));
+    
+    
+		Prestataire prestataire1 = new Prestataire(null,"salif service","la qualité superieure", "louer accessoire", "77 237 36 83", "salif1234@gmail.com", null);
+		Prestataire prestataire2 = new Prestataire(null,"diagne service","la qualité inferieure", "louer velo", "77 000 00 00", "moussa1234@gmail.com", null);
+		Prestataire prestataire3 = new Prestataire(null,"cmc service","la qualité moyenne", "louer moto", "77 111 11 11", "cmc1234@gmail.com", null);
+
+		pService.ajouter_prestataire(prestataire1);
+		pService.ajouter_prestataire(prestataire2);
+		pService.ajouter_prestataire(prestataire3);
 
 	}
-
 
 }
