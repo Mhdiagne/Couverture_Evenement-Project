@@ -1,0 +1,26 @@
+.menu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+/*.menu-nav{*/
+/*    display: block;*/
+/*}*/
+
+.menu-nav>button{
+    width: 24rem;
+    background-color: #113f36;
+    color: #ffff    ;
+    border: none;
+    border-radius: 16px;
+    height: 3rem;
+    margin: 1rem 0rem;
+    font-size: larger;
+}
+
+.menu-nav>button:hover{
+    opacity: 0.6;
+    font-size: 16px;
+}
