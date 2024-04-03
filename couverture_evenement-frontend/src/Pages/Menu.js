@@ -1,5 +1,5 @@
 import React from 'react';
-import event from  "../assets/img/event.png";
+import event from  "../assets/svg/welcome-animate.svg";
 
 const Menu = () => {
     return (
