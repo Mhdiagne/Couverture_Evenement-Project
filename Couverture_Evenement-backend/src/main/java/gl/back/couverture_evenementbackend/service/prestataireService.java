@@ -33,7 +33,7 @@ public class prestataireService {
     }
 
     public void modifier_prestataire(Prestataire prestataire, Long id) {
-        prestataire.setId_prestataire(id);
+        prestataire.setId(id);
         pRepository.save(prestataire);
     }
 

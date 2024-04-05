@@ -19,6 +19,7 @@ import gl.back.couverture_evenementbackend.entity.Prestataire;
 import gl.back.couverture_evenementbackend.service.prestataireService;
 //import gl.back.couverture_evenementbackend.entity.Evenement;
 
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/prestataire/api")
@@ -46,7 +47,6 @@ public ResponseEntity<Prestataire> ajouterPrestataire(@RequestBody Prestataire p
     return ResponseEntity.ok(nouvellePrestataire);
 }
 
-    
 
     @PutMapping(path = "/modifierPrestataire/{id}")
     public void modifierPrestataire(@RequestBody Prestataire prestataire, @PathVariable Long id) {

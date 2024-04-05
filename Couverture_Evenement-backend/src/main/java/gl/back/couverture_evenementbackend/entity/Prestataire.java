@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Prestataire {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id_prestataire;
+    private Long id;
     private String nom;
     private String description;
     private String fonction;
