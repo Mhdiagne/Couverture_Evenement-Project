@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import Menu from "./Pages/Menu";
+import Prestataire from "./Pages/Prestataire";
 
 function App() {
   return (
     <div className="App">
-      <Menu/>
+      <Prestataire/>
     </div>
   );
 }

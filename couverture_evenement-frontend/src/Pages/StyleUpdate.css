@@ -1,0 +1,80 @@
+/* Style pour la fenêtre modale */
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+}
+
+/* Style pour le contenu de la fenêtre modale */
+.modal-content {
+  background-color: #283618; /* Couleur de fond verte foncée */
+  color: #fff; /* Couleur du texte */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Ombre légère */
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Style pour le bouton de fermeture */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #ccc; /* Couleur de l'icône de fermeture */
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #fff; /* Couleur de l'icône de fermeture au survol */
+}
+
+/* Style pour le titre de la fenêtre modale */
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Style pour les étiquettes de formulaire */
+.modal-content label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Style pour les champs de formulaire */
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: #fff; /* Couleur de fond des champs de formulaire */
+  color: #333; /* Couleur du texte des champs de formulaire */
+}
+
+/* Style pour le bouton de soumission */
+.modal-content button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #02551b; /* Couleur de fond du bouton de soumission */
+  color: #fff; /* Couleur du texte du bouton de soumission */
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #02101f; /* Couleur de fond du bouton de soumission au survol */
+}
