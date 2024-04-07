@@ -2,8 +2,10 @@ package gl.back.couverture_evenementbackend;
 
 import gl.back.couverture_evenementbackend.entity.Evenement;
 import gl.back.couverture_evenementbackend.entity.Prestation;
+import gl.back.couverture_evenementbackend.entity.Utilisateur;
 import gl.back.couverture_evenementbackend.repository.EvenementRepository;
 import gl.back.couverture_evenementbackend.repository.PrestationRepository;
+import gl.back.couverture_evenementbackend.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -30,6 +32,9 @@ public class CouvertureEvenementBackendApplication implements CommandLineRunner 
 	@Autowired
 	private PrestationRepository prestationRepository;
 
+	@Autowired
+	private UtilisateurRepository utilisateurRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(CouvertureEvenementBackendApplication.class, args);
 	}
@@ -38,25 +43,34 @@ public class CouvertureEvenementBackendApplication implements CommandLineRunner 
 
 		List<Prestation> prestations = new ArrayList<>();
 
+		Utilisateur utilisateur1 = new Utilisateur(null,"Doe", "John", "Masculin", "john.doe@example.com", "password123", "CLIENT",null);
+		Utilisateur utilisateur2 = new Utilisateur(null,"Smith", "Alice", "Féminin", "alice.smith@example.com", "password456", "AGENT",null);
+		Utilisateur utilisateur3 = new Utilisateur(null,"Brown", "Bob", "Masculin", "bob.brown@example.com", "password789", "CLIENT",null);
+		utilisateurRepository.saveAll(Arrays.asList(utilisateur1,utilisateur2,utilisateur3));
+
 		Evenement evenement1 = new Evenement();
 		evenement1.setNom("Conférence sur l'environnement");evenement1.setTypeEvenement("Conférence");
 		evenement1.setArchive(false);evenement1.setDateEvenement("2024-04-15");evenement1.setDuree(120);
+		evenement1.setUser(utilisateur1);
 
 		Evenement evenement2 = new Evenement();
 		evenement2.setNom("Séminaire de formation");evenement2.setTypeEvenement("Formation");evenement2.setArchive(false);
 		evenement2.setDateEvenement("2024-05-20");evenement2.setDuree(180);evenement2.setPrestations(prestations);
+		evenement2.setUser(utilisateur3);
 
 		Evenement evenement3 = new Evenement();
 		evenement3.setNom("Soirée de gala");evenement3.setTypeEvenement("Soirée");evenement3.setArchive(false);
 		evenement3.setDateEvenement("2024-06-30");evenement3.setDuree(240);
+		evenement3.setUser(utilisateur3);
 
 		Evenement evenement4 = new Evenement();
 		evenement4.setNom("Tournoi de tennis");evenement4.setTypeEvenement("Sport");evenement4.setArchive(false);
 		evenement4.setDateEvenement("2024-07-10");evenement4.setDuree(300);evenement4.setPrestations(prestations);
+		evenement4.setUser(utilisateur1);
 
 		Evenement evenement5 = new Evenement();
 		evenement5.setNom("Exposition d'art contemporain");evenement5.setTypeEvenement("Exposition");evenement5.setArchive(false);
-		evenement5.setDateEvenement("2024-08-25");evenement5.setDuree(150);
+		evenement5.setDateEvenement("2024-08-25");evenement5.setDuree(150);evenement5.setUser(utilisateur3);
 		evenementRepository.saveAll(Arrays.asList(evenement1,evenement2,evenement3,evenement4,evenement5));
 
 		Prestation prestation1 = new Prestation();prestation1.setLibelle(" Restauration ");

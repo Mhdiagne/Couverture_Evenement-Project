@@ -26,10 +26,11 @@ public class PrestationService {
         return prestationRepository.save(E);
     }
 
-    public Prestation updateprestation(Long id, Prestation E) {
+    public Prestation updateprestation(Long id, Prestation newS) {
         if (prestationRepository.existsById(id)) {
-            E.setId_Prestation(id);
-            return prestationRepository.save(E);
+            Prestation oldS = getOnePrestation(id);
+            oldS.setLibelle(newS.getLibelle());
+            return prestationRepository.save(oldS);
         }
         return null;
     }

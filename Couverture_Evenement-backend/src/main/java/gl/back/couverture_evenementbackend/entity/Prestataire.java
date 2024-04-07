@@ -3,6 +3,7 @@ package gl.back.couverture_evenementbackend.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Entity @Table(name="table_Prestataires")
 public class Prestataire {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id_prestataire;
     private String nom;
     private String description;
@@ -30,10 +31,7 @@ public class Prestataire {
     private String telephone;
     private String mail;
 
-
-    @ManyToMany
-    @JoinTable( name = "T_Prestataires_Evenements_Association",
-                joinColumns = @JoinColumn( name = "id_prestataire" ),
-                inverseJoinColumns = @JoinColumn( name = "id_evenement" ) )
-    private List<Prestataire> prestataires = new ArrayList<>();
+    @JsonIgnore
+    @ManyToMany(mappedBy = "prestataires")
+    private List<Evenement> evenements ;
 }

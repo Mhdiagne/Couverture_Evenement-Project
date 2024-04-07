@@ -21,7 +21,7 @@ import gl.back.couverture_evenementbackend.service.prestataireService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/prestataire/api")
+@RequestMapping("/prestataire")
 public class prestataireController {
 
     @Autowired
@@ -30,30 +30,30 @@ public class prestataireController {
     /*****************************************************
      * PARTIE REST
      *****************************/
-    @GetMapping(path = "/listerPrestataire")
+    @GetMapping
     public List<Prestataire> listerPrestataires() {
         return pService.afficher_tout_prestataire();
     }
 
-    @GetMapping(path = "/trouverPrestataire/{id}")
+    @GetMapping(path = "/{id}")
     public Prestataire rechercherPrestataire(@PathVariable Long id) {
         return pService.rechercher_prestataire(id);
     }
 
- @PostMapping(path = "/ajouterPrestataire")
-public ResponseEntity<Prestataire> ajouterPrestataire(@RequestBody Prestataire prestataire) {
-    Prestataire nouvellePrestataire = pService.ajouter_prestataire(prestataire);
-    return ResponseEntity.ok(nouvellePrestataire);
-}
+    @PostMapping(path = "/create")
+    public ResponseEntity<Prestataire> ajouterPrestataire(@RequestBody Prestataire prestataire) {
+        Prestataire nouvellePrestataire = pService.ajouter_prestataire(prestataire);
+        return ResponseEntity.ok(nouvellePrestataire);
+    }
 
     
 
-    @PutMapping(path = "/modifierPrestataire/{id}")
+    @PutMapping(path = "/update/{id}")
     public void modifierPrestataire(@RequestBody Prestataire prestataire, @PathVariable Long id) {
         pService.modifier_prestataire(prestataire, id);
     }
 
-    @DeleteMapping(path = "/supprimerPrestataire/{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public void supprimerPrestataire(@PathVariable Long id) {
         pService.suprimer_prestataire(id);
     }

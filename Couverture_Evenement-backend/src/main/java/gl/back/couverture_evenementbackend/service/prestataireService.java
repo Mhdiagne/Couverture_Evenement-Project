@@ -12,13 +12,9 @@ import gl.back.couverture_evenementbackend.repository.prestataireRepository;
 @Service
 public class prestataireService {
 
-     @Autowired
+    @Autowired
     private prestataireRepository pRepository;
 
-    public Prestataire ajouter_prestataire(Prestataire prestataire) {
-        return pRepository.save(prestataire);
-
-    }
 
     public List<Prestataire> afficher_tout_prestataire() {
         return pRepository.findAll();
@@ -28,13 +24,22 @@ public class prestataireService {
         return pRepository.findById(id).get();
     }
 
+    public Prestataire ajouter_prestataire(Prestataire p) { return pRepository.save(p);}
+
     public void suprimer_prestataire(Long id) {
         pRepository.deleteById(id);
     }
 
-    public void modifier_prestataire(Prestataire prestataire, Long id) {
-        prestataire.setId_prestataire(id);
-        pRepository.save(prestataire);
+    public void modifier_prestataire(Prestataire newP, Long id) {
+        if (pRepository.existsById(id)) {
+            Prestataire oldP = rechercher_prestataire(id);
+            oldP.setNom(newP.getNom());
+            oldP.setDescription(newP.getDescription());
+            oldP.setMail(newP.getMail());
+            oldP.setFonction(newP.getFonction());
+            oldP.setTelephone(newP.getTelephone());
+            pRepository.save(oldP);
+        }
     }
 
    

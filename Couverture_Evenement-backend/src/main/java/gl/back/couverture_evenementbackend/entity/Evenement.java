@@ -25,4 +25,10 @@ public class Evenement {
 
     @ManyToMany
     private List<Prestation> prestations;
+
+    @ManyToMany
+    private List<Prestataire> prestataires;
+
+    @ManyToOne
+    private Utilisateur user;
 }

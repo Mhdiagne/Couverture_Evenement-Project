@@ -26,7 +26,12 @@ public class UtilisateurService {
     public Utilisateur updateUtilisateur(Long id, Utilisateur user) {
         if (utilisateurRepository.existsById(id)) {
             Utilisateur updateUser = getUtilisateurById(id);
-            updateUser.setId_user(user.getId_user());
+            updateUser.setNom(user.getNom());
+            updateUser.setPrenom(user.getPrenom());
+            updateUser.setSexe(user.getSexe());
+            updateUser.setMail(user.getMail());
+            updateUser.setPassword(user.getPassword());
+            updateUser.setRole(user.getRole());
             return utilisateurRepository.save(updateUser);
         }
         return null;

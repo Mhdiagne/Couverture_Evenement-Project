@@ -43,4 +43,14 @@ public class EvenementController {
     public void deleteEvenement(@PathVariable Long id) {
         evenementService.deleteEvenement(id);
     }
+
+    @PostMapping("/{idP}/addService/{idE}")
+    public void addServiceToEvent(@PathVariable Long idE, @PathVariable Long idP) {
+        evenementService.addPrestationToEvenement(idE,idP);
+    }
+
+    @PostMapping("/{idP}/addPrestataire/{idE}")
+    public void addPrestataireToEvent(@PathVariable Long idE, @PathVariable Long idP) {
+        evenementService.addPrestataireToEvenement(idE,idP);
+    }
 }

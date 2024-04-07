@@ -1,9 +1,7 @@
 package gl.back.couverture_evenementbackend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 
@@ -12,6 +10,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -25,13 +25,12 @@ public class Utilisateur {
 
     private String nom;
     private String prenom;
-    private String description;
     private String sexe;
     private String mail;
     private String password;
     private String role;
 
-//     @ManyToOne
-//     @JoinColumn(name = "evenement_id")
-//     private Evenement evenement;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<Evenement> evenement;
 }
