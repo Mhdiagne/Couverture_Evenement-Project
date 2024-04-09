@@ -19,7 +19,6 @@ import gl.back.couverture_evenementbackend.entity.Prestataire;
 import gl.back.couverture_evenementbackend.service.prestataireService;
 //import gl.back.couverture_evenementbackend.entity.Evenement;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/prestataire")
 public class prestataireController {

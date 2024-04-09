@@ -26,11 +26,14 @@ public class Utilisateur {
     private String nom;
     private String prenom;
     private String sexe;
+    @Column(unique = true,nullable = false)
     private String mail;
+    @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
     private String role;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
+    @OneToMany
     private List<Evenement> evenement;
 }

@@ -1,8 +1,11 @@
 package gl.back.couverture_evenementbackend.restController;
 
 
+import gl.back.couverture_evenementbackend.CouvertureEvenementBackendApplication;
 import gl.back.couverture_evenementbackend.entity.Utilisateur;
 import gl.back.couverture_evenementbackend.service.UtilisateurService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +20,8 @@ public class UtilisateurController {
     @Autowired
     private UtilisateurService utilisateurService;
 
+    private static final Logger logger = LoggerFactory.getLogger(CouvertureEvenementBackendApplication.class);
+
     @GetMapping
     public ResponseEntity<List<Utilisateur>> getAllUtilisateur() {
         if (!utilisateurService.getAllUtilisateur().isEmpty())
@@ -30,8 +35,9 @@ public class UtilisateurController {
         return utilisateurService.getUtilisateurById(id);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/inscriptionClient")
     public  Utilisateur createUtilisateur(@RequestBody Utilisateur user) {
+        logger.info("Inscription reussie!");
         return utilisateurService.createUtilisateur(user);
     }
 
@@ -44,4 +50,10 @@ public class UtilisateurController {
     public void deleteUtilisateur(@PathVariable Long id) {
         utilisateurService.deleteUtilisateur(id);
     }
+
+//    @PostMapping(path = "/inscriptionClient")
+//    public void inscription(@RequestBody Client client){
+//        logger.info("InscriptionClient");
+//        clientService.inscription(client);
+//    }
 }
