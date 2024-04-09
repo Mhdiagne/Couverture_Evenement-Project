@@ -1,22 +1,18 @@
 package gl.back.couverture_evenementbackend.restController;
 
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import gl.back.couverture_evenementbackend.entity.Prestataire;
 import gl.back.couverture_evenementbackend.service.prestataireService;
+import org.springframework.web.multipart.MultipartFile;
 //import gl.back.couverture_evenementbackend.entity.Evenement;
 
 @RestController
@@ -39,13 +35,33 @@ public class prestataireController {
         return pService.rechercher_prestataire(id);
     }
 
-    @PostMapping(path = "/create")
-    public ResponseEntity<Prestataire> ajouterPrestataire(@RequestBody Prestataire prestataire) {
-        Prestataire nouvellePrestataire = pService.ajouter_prestataire(prestataire);
-        return ResponseEntity.ok(nouvellePrestataire);
+    @GetMapping(path = "/{id}/get_img")
+    public ResponseEntity<?> touverArticleImage(@PathVariable Long id) throws IOException{
+        byte[] image = pService.getImagePrestataire(id);
+        //String imgType = FileUploadUtil.getContentType(aService.getArticleById(id).getImageCouverture());
+        return ResponseEntity.status(HttpStatus.OK)
+                .contentType(MediaType.valueOf("image/png"))
+                .body(image);
     }
 
-    
+    @PostMapping("/create")
+    public Prestataire createPrestataire(
+            @RequestParam("file") MultipartFile file,
+            @RequestParam("nom") String nom,
+            @RequestParam("description") String description,
+            @RequestParam("fonction") String fonction,
+            @RequestParam("telephone") String telephone,
+            @RequestParam("mail") String mail) throws IOException {
+        Prestataire user = new Prestataire();
+        user.setNom(nom);
+        user.setDescription(description);
+        user.setFonction(fonction);
+        user.setTelephone(telephone);
+        user.setMail(mail);
+        Prestataire userF = pService.ajouter_prestataire(user);
+        pService.addImageToPrestataire(file, userF.getId_prestataire());
+        return userF;
+    }
 
     @PutMapping(path = "/update/{id}")
     public void modifierPrestataire(@RequestBody Prestataire prestataire, @PathVariable Long id) {

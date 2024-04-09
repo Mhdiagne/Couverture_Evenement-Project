@@ -26,6 +26,7 @@ public class Utilisateur {
     private String nom;
     private String prenom;
     private String sexe;
+    private String image;
     @Column(unique = true,nullable = false)
     private String mail;
     @Column(nullable = false)

@@ -26,6 +26,7 @@ public class Prestataire {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id_prestataire;
     private String nom;
+    private String image;
     private String description;
     private String fonction;
     private String telephone;
