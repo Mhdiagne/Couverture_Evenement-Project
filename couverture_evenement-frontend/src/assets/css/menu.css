@@ -1,3 +1,44 @@
+/* ============================================== */
+@import url('./_variable.css');
+/* ============================================== */
+.header {
+    display: flex;
+    align-items: center;
+    height: 4.4rem;
+    background-color: var(--uasz-vert-1);
+}
+
+.logo {
+    margin-left: 3rem; 
+}
+
+.header-title {
+    margin-left: 4cm; 
+    color: white; 
+    font-size: 2.3rem;
+    font-weight: 600;
+}
+.avatar {
+    margin-left: 4cm;
+}
+.fa-icon1 {
+    font-size: 15px; 
+}
+.icon-text1 {
+    margin-left: 35px;
+}
+.icon-text2 {
+    margin-left: 55px;
+}
+.icon-text3 {
+    margin-left: 18px;
+}
+.icon-text4 {
+    margin-left: 55px;
+}
+
+
+/* ============================================== */
 .menu{
     display: flex;
     justify-content: space-around;
@@ -9,18 +50,23 @@
 /*    display: block;*/
 /*}*/
 
-.menu-nav>button{
-    width: 24rem;
-    background-color: #113f36;
-    color: #ffff    ;
+.nav-button{
+    width: 20rem;
+    background-color: var(--uasz-vert-1);
+    color: #ffff;
     border: none;
-    border-radius: 16px;
+    border-radius: 10px;
     height: 3rem;
     margin: 1rem 0rem;
-    font-size: larger;
+    font-size: 1.3rem;
+    cursor: pointer;
+    /* font-weight: 400; */
 }
 
 .menu-nav>button:hover{
-    opacity: 0.6;
-    font-size: 16px;
+    /* opacity: 0.6; */
+    color: white;
+    background-color: var(--uasz-vert-2);
+    font-size: 1.4rem;
+    transition: ease 1s;
 }
