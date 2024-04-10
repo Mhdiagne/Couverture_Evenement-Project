@@ -14,7 +14,7 @@ class Header extends Component {
 
                 </Link>
                 <h3 className="header-title">Gestion des Couvertures d'évènements</h3>
-                <a href='/login'>
+                <a href='/connexion'>
                 <img src={avatar} alt="Avatar" className="avatar" width={45} height={45}/>
                 </a>
             </header>

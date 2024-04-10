@@ -3,6 +3,9 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/img/Logo_uasz-bg-transparent.png';
 import '../assets/css/Login.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 export default function Login() {
     return (
@@ -15,7 +18,7 @@ export default function Login() {
                         <span id='subText'>Connectez-vous à votre compte</span>
                     </h3>
                     <p>Vous n'avez pas de compte? 
-                        <Link to="#" className="login-link"> S'inscrire →</Link>
+                        <Link to="/inscription" className="login-link"> S'inscrire →</Link>
                     </p>
                 </div>
                 <form className="mt-8 space-y-5">
