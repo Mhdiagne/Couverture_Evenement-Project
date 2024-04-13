@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import { accountService } from '../service/accountService';
 import { SERVER_URL } from '../constante';
 import AddService from './AddService';
-import event from "../assets/svg/welcome-animate.svg"
+import event from "../assets/svg/work-anniversary-animate.svg"
 
 const FormDemande = () => {
     const list = ["Familliale","Religieuse","Seminaire", "Professionel","Autres...",];

@@ -190,7 +190,8 @@ const PrestatairesDisponibles = () => {
         <div>
             <Header/>   
             <h2>Prestataires Disponibles </h2>
-            <div className="contenaire">
+            <br/>
+            <div>
                 <Accordion>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
