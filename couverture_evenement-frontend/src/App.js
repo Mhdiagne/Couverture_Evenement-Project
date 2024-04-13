@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Menu from './Pages/Menu';
 import AjouterDemande from './Pages/AjouterDemande';
@@ -21,22 +21,24 @@ import Rapports from './Components/Dashbord/Rapports';
 function App() {
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Menu />} />
+          <Route path="/menu" element={<Menu />} />
+          {/* ------------------ ADMIN ------------------------------ */}
           <Route path="/admin" element={<AdminDashbord />} />
           <Route path="/admin/home" element={<HomeDashBord />} />
           <Route path='/admin/profile' element={<ProfileDashbord/>}/>
           <Route path='/admin/prestations' element={<ServicePrestation/>}/>
           <Route path='/admin/rapports' element={<Rapports/>}/>
+          {/* -------------------------------------------------------- */}
           <Route path="/ajouter-demande" element={<AjouterDemande/>} /> 
           <Route path="/voir-mes-demandes" element={<VoirMesDemandes />} />
           <Route path="/prestataires-disponibles" element={<PrestatairesDisponibles />} />
           <Route path="/suivre-ma-demande" element={<SuivreMaDemande />} />
-          <Route path="/connexion" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/inscription" element={<Inscription />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }

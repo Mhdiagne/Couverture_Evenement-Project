@@ -19,6 +19,8 @@ public class Evenement {
     private Long id_Evenement;
     private String nom;
     private String typeEvenement;
+    private String description;
+    private String lieu;
     private boolean archive;
     private String dateEvenement;
     private int duree;

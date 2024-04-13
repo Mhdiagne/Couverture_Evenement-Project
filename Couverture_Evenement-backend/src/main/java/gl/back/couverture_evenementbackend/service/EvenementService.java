@@ -50,6 +50,8 @@ public class EvenementService {
             oldE.setDuree(newE.getDuree());
             oldE.setDateEvenement(newE.getDateEvenement());
             oldE.setUser(newE.getUser());
+            oldE.setDescription(newE.getDescription());
+            oldE.setLieu(newE.getLieu());
             return evenementRepository.save(oldE);
         }
         return null;

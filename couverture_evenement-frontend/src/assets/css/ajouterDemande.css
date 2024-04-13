@@ -1,0 +1,55 @@
+
+
+
+.contenaire {
+    display: flex;
+    justify-content: space-between; /* Aligne les éléments avec un espacement entre eux */
+    align-items: center; /* Centre verticalement les éléments */
+    margin-bottom: 20px; 
+  }
+  .menu-svg {
+    width: 45%; /* Ajuste la largeur de l'image SVG selon vos besoins */
+}
+
+.menu-svg img {
+    max-width: 100%; /* Assure que l'image SVG s'ajuste correctement à la largeur de son conteneur */
+}
+  
+  .formulaireD {
+    width: 70%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #valider {
+    display: block;
+    margin: 0 auto;
+    color: rgb(255, 255, 255) !important; 
+    width: auto !important;
+    background-color: var(--uasz-vert-2) !important;
+    font-weight: bold;
+  }
+  #valider:hover{
+    background-color: var(--uasz-vert-1) !important;
+}
+  .formulaireD .MuiTextField-root {
+    margin-bottom: 20px;
+  }
+  
+  .formulaireD .MuiAutocomplete-root {
+    margin-bottom: 20px;
+  }
+  
+  .formulaireD .MuiButton-root {
+    display: block;
+    margin: 20px auto;
+  }
+  /* ======================================================= */
+  

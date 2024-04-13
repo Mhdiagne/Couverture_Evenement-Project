@@ -34,6 +34,10 @@ public class UtilisateurService {
         return utilisateurRepository.findRoleMail(mail);
     }
 
+    public String getNomMail(String mail) { return utilisateurRepository.findNomMail(mail); }
+
+    public String getPrenomMail(String mail) { return utilisateurRepository.findPrenomMail(mail); }
+
     public List<Utilisateur> getAllUtilisateur() {
         return utilisateurRepository.findAll();
     }

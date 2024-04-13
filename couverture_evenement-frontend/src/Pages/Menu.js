@@ -4,19 +4,22 @@ import '../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css';
 import Header from '../Components/Header';
 import { Link } from 'react-router-dom';
 import "../assets/css/menu.css"
+import { accountService } from '../service/accountService';
 
 const Menu = () => {
+    const token = accountService.getToken();
     return (
+        (token) ? (
         <div>
             <Header />
-            <div className="menu">
-                <div className="menu-nav">
-                    <Link to="/ajouter-demande">
-                        <button className='nav-button'>
-                            <i className="fas fa-plus fa-icon"></i>
-                            <span className="icon-text1">Ajouter une demande</span>
-                        </button>
-                    </Link>
+                <div className="menu">
+                    <div className="menu-nav">
+                        <Link to="/ajouter-demande">
+                            <button className='nav-button'>
+                                <i className="fas fa-plus fa-icon"></i>
+                                <span className="icon-text1">Ajouter une demande</span>
+                            </button>
+                        </Link>
                     <br />
                     <Link to="/voir-mes-demandes">
                         <button className='nav-button'>
@@ -44,6 +47,7 @@ const Menu = () => {
                 </div>
             </div>
         </div>
+    ) : ("")
     );
 };
 
