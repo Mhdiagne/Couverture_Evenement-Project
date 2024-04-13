@@ -33,7 +33,11 @@ public class EvenementController {
         else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+    @GetMapping("/archives")
+    public List<Evenement> genererRapportEvenementsArchives() {
 
+        return evenementService.getEvenementsArchives();
+    }
     @GetMapping("/{id}")
     public Evenement getOneEvenement(@PathVariable Long id) {
         return evenementService.getOneEvenement(id);

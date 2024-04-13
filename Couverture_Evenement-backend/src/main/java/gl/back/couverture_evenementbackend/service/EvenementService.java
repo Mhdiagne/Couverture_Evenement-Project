@@ -26,6 +26,10 @@ public class EvenementService {
     @Autowired
     private gl.back.couverture_evenementbackend.service.prestataireService prestataireService;
 
+    public List<Evenement> getEvenementsArchives() {
+        return evenementRepository.findByArchiveTrue();
+    }
+
     public List<Evenement> getAllEvenement() {
         return evenementRepository.findAll();
     }
