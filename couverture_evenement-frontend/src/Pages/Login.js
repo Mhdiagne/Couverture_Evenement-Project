@@ -8,7 +8,7 @@ import { useState } from 'react';
 import axios from "axios";
 import { accountService } from '../service/accountService';
 import Menu from './Menu';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 

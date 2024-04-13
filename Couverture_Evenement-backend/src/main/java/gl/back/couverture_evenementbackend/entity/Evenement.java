@@ -23,6 +23,7 @@ public class Evenement {
     private String lieu;
     private boolean archive;
     private String dateEvenement;
+    private String valide;
     private int duree;
 
     @ManyToMany
@@ -31,6 +32,6 @@ public class Evenement {
     @ManyToMany
     private List<Prestataire> prestataires;
 
-    @ManyToOne
-    private Utilisateur user;
+    @ManyToMany
+    private List<Utilisateur> users;
 }

@@ -1,7 +1,11 @@
 package gl.back.couverture_evenementbackend.restController;
 
 import gl.back.couverture_evenementbackend.entity.Evenement;
+import gl.back.couverture_evenementbackend.entity.Utilisateur;
+import gl.back.couverture_evenementbackend.repository.UtilisateurRepository;
 import gl.back.couverture_evenementbackend.service.EvenementService;
+import gl.back.couverture_evenementbackend.service.JwtService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +19,12 @@ public class EvenementController {
 
     @Autowired
     private EvenementService evenementService;
+
+    @Autowired
+    private JwtService jwtService;
+
+    @Autowired
+    private UtilisateurRepository utilisateurRepository;
 
     @GetMapping
     public ResponseEntity<List<Evenement>> getAllEvenement() {
@@ -30,8 +40,13 @@ public class EvenementController {
     }
 
     @PostMapping("/create")
-    public  Evenement createEvenement(@RequestBody Evenement R) {
-        return evenementService.createEvenement(R);
+    public  Evenement createEvenement(@RequestBody Evenement R, HttpServletRequest request) {
+        Evenement newE = evenementService.createEvenement(R);
+        String mail = jwtService.getAuthUser(request);
+        Utilisateur user =  utilisateurRepository.findUtilisateurByMail(mail)
+                .orElseThrow(()-> new RuntimeException("Client "+mail+" not found"));
+        evenementService.addUserToEvenement(R.getId_Evenement(), user.getId_user());
+        return newE;
     }
 
     @PutMapping("/edit/{id}")

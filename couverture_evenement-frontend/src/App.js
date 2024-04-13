@@ -8,7 +8,7 @@ import PrestatairesDisponibles from './Pages/PrestatairesDisponibles';
 import SuivreMaDemande from './Pages/SuivreMaDemande';
 import Login from './Pages/Login';
 import Inscription from './Pages/Inscription';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
