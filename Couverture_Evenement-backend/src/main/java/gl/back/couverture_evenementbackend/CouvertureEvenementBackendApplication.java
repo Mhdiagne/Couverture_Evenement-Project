@@ -84,7 +84,7 @@ public class CouvertureEvenementBackendApplication implements CommandLineRunner 
 
 		List<Prestation> prestations = new ArrayList<>();
 
-		Utilisateur utilisateur1 = new Utilisateur(null,"Doe", "John", "Masculin",null, "john.doe@example.com", "$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue", "CLIENT",null);
+		Utilisateur utilisateur1 = new Utilisateur(null,"Doe", "John", "Masculin","1_sung_jinwoo.jpg", "john.doe@example.com", "$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue", "CLIENT",null);
 		Utilisateur utilisateur2 = new Utilisateur(null,"Smith", "Alice", "Féminin",null, "alice.smith@example.com", "$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue", "AGENT",null);
 		Utilisateur utilisateur3 = new Utilisateur(null,"Brown", "Bob", "Masculin",null, "bob.brown@example.com", "$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue", "CLIENT",null);
 		utilisateurRepository.saveAll(Arrays.asList(utilisateur1,utilisateur2,utilisateur3));
@@ -134,10 +134,14 @@ public class CouvertureEvenementBackendApplication implements CommandLineRunner 
 		Prestataire prestataire1 = new Prestataire(null,"salif service",null,"la qualité superieure", "louer accessoire", "77 237 36 83", "salif1234@gmail.com", null);
 		Prestataire prestataire2 = new Prestataire(null,"diagne service",null,"la qualité inferieure", "louer velo", "77 000 00 00", "moussa1234@gmail.com", null);
 		Prestataire prestataire3 = new Prestataire(null,"cmc service",null,"la qualité moyenne", "louer moto", "77 111 11 11", "cmc1234@gmail.com", null);
+		Prestataire prestataire4 = new Prestataire(null,"cmc service",null,"la qualité moyenne", "louer moto", "77 111 11 11", "cmc1234@gmail.com", null);
+		Prestataire prestataire5 = new Prestataire(null,"cmc service",null,"la qualité moyenne", "louer moto", "77 111 11 11", "cmc1234@gmail.com", null);
 
 		pService.ajouter_prestataire(prestataire1);
 		pService.ajouter_prestataire(prestataire2);
 		pService.ajouter_prestataire(prestataire3);
+		pService.ajouter_prestataire(prestataire4);
+		pService.ajouter_prestataire(prestataire5);
 
 	}
 
