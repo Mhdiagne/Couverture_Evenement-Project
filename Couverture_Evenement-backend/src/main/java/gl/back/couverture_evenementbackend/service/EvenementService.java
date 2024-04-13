@@ -3,6 +3,7 @@ package gl.back.couverture_evenementbackend.service;
 import gl.back.couverture_evenementbackend.entity.Evenement;
 import gl.back.couverture_evenementbackend.entity.Prestataire;
 import gl.back.couverture_evenementbackend.entity.Prestation;
+import gl.back.couverture_evenementbackend.entity.Utilisateur;
 import gl.back.couverture_evenementbackend.repository.EvenementRepository;
 import gl.back.couverture_evenementbackend.repository.PrestationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class EvenementService {
     private EvenementRepository evenementRepository;
 
     @Autowired
-    private PrestationRepository prestationRepository;
+    private UtilisateurService utilisateurService;
 
     @Autowired
     private  PrestationService prestationService;
@@ -49,9 +50,9 @@ public class EvenementService {
             oldE.setArchive(newE.isArchive());
             oldE.setDuree(newE.getDuree());
             oldE.setDateEvenement(newE.getDateEvenement());
-            oldE.setUser(newE.getUser());
             oldE.setDescription(newE.getDescription());
             oldE.setLieu(newE.getLieu());
+            oldE.setValide(newE.getValide());
             return evenementRepository.save(oldE);
         }
         return null;
@@ -74,6 +75,13 @@ public class EvenementService {
         Evenement event = getOneEvenement(idE);
         Prestataire prestataire = prestataireService.rechercher_prestataire(idP);
         event.getPrestataires().add(prestataire);
+        evenementRepository.save(event);
+    }
+
+    public void addUserToEvenement(Long idE, Long idU) {
+        Evenement event = getOneEvenement(idE);
+        Utilisateur utilisateur = utilisateurService.getUtilisateurById(idU);
+        event.getUsers().add(utilisateur);
         evenementRepository.save(event);
     }
 

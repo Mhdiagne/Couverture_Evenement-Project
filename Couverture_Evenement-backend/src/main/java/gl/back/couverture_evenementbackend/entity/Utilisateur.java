@@ -35,6 +35,6 @@ public class Utilisateur {
     private String role;
 
     @JsonIgnore
-    @OneToMany
+    @ManyToMany(mappedBy = "users")
     private List<Evenement> evenement;
 }

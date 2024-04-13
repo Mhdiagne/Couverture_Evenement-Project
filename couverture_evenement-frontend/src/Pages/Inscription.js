@@ -2,13 +2,22 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/img/Logo_uasz-bg-transparent.png';
 import '../assets/css/inscription.css'; 
+import { SERVER_URL } from '../constante';
+import axios from 'axios';
 
 export default function Inscription() {
     const [imagePreview, setImagePreview] = useState(null);
+    const [formData, setFormData] = useState({
+        prenom: '',
+        nom: '',
+        sexe: '',
+        mail: '',
+        password: '',
+    });
 
     const previewImage = (event) => {
         const file = event.target.files[0];
-
+        setImagePreview(file);
         if (file) {
             const reader = new FileReader();
 
@@ -21,6 +30,68 @@ export default function Inscription() {
             setImagePreview(null);
         }
     }
+
+    const handleOnChange = (event) => {
+        const { name, value } = event.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const posterUser = () => {
+        const fData = new FormData();
+        fData.append('file', imagePreview); // Remplacez "file" par votre fichier d'image
+        fData.append('nom', formData.nom);
+        fData.append('prenom', formData.prenom);
+        fData.append('sexe', formData.sexe);
+        fData.append('mail', formData.mail);
+        fData.append('password', formData.password);
+        console.log(fData);
+        axios.post(SERVER_URL+`utilisateur/inscriptionClient`,fData)
+            .then(response=>{
+            if (response.ok) {
+                const userData = response.json();
+                console.log('Utilisateur inscrit avec succès:', userData);
+               
+            } else {
+                console.error('Erreur lors de l\'inscription:', response.statusText);
+            }})
+            .catch (error=>{
+                console.error('Une erreur s\'est produite:', error);
+            })
+    };
+
+    
+    // const postUser = () => {
+    //     const fData = new FormData();
+    //     fData.append('file', imagePreview); // Remplacez "file" par votre fichier d'image
+    //     fData.append('nom', formData.nom);
+    //     fData.append('prenom', formData.prenom);
+    //     fData.append('sexe', formData.sexe);
+    //     fData.append('mail', formData.mail);
+    //     console.log(fData);
+    //     fetch(SERVER_URL + `utilisateur/inscriptionClient`, {
+    //       method: "POST",
+    //       headers: { 'Content-Type': 'multipart/form-data' },
+    //       body: fData
+    //     })
+    //     .then(response => {
+    //       if (!response.ok) {
+    //         throw new Error('Erreur de connexion au serveur');
+    //     }
+    //     if (response.status === 200) {
+    //         alert("Inscription reussi avec succes! ");
+    //         return response.json();    
+    //     }
+    //     alert("Erreur de création");
+    //     return null
+    //     })
+    //     .catch(error => {
+    //       console.error("Une erreur s'est produite :", error);
+    //     });
+    // };
+
 
     return (
         <main className="">
@@ -44,7 +115,7 @@ export default function Inscription() {
                             <label className="inscription-profile-label">Photo de Profil</label>
                             <div className="inscription-profile-upload">
                                 <div className="custom-file-upload">
-                                    <input type="file" id="fileInput" accept="image/*" onChange={previewImage} />
+                                    <input type="file" id="fileInput"  accept="image/*" onChange={previewImage} />
                                     <label htmlFor="fileInput">Choisir un fichier</label>
                                 </div>
                                 <div id="imagePreview">
@@ -56,11 +127,11 @@ export default function Inscription() {
                         
                         <div className="inscription-name">
                             <label className="inscription-name-label">Prénom</label>
-                            <input type="text" required className="inscription-name-input" />
+                            <input type="text" name='prenom' required className="inscription-name-input" onChange={handleOnChange} />
                         </div>
                         <div className="inscription-name">
                             <label className="inscription-name-label">Nom</label>
-                            <input type="text" required className="inscription-name-input" />
+                            <input type="text" name='nom'  required className="inscription-name-input" onChange={handleOnChange} />
                         </div>
                     </div>
                     <br/>
@@ -69,26 +140,26 @@ export default function Inscription() {
                             <label className="inscription-gender-label">Sexe</label>
                             <div className="inscription-gender-options">
                                 {/* Options pour sélectionner le sexe */}
-                                <label><input type="radio" name="gender" value="male" /> Homme</label>
-                                <label><input type="radio" name="gender" value="female" /> Femme</label>
-                                <label><input type="radio" name="gender" value="other" /> Autre</label>
+                                <label><input type="radio" name="sexe" value="homme" onChange={handleOnChange} /> Homme</label>
+                                <label><input type="radio" name="sexe" value="femme" onChange={handleOnChange} /> Femme</label>
+                                <label><input type="radio" name="sexe" value="other" onChange={handleOnChange} /> Autre</label>
                             </div>
                         </div>
                         <div className="inscription-email">
                             <label className="inscription-email-label">Email</label><br/>
-                            <input type="email" required className="inscription-email-input" />
+                            <input type="email" name='mail'  required className="inscription-email-input" onChange={handleOnChange} />
                         </div>
                         <div className="inscription-password">
                             <label className="inscription-password-label">Password</label><br/>
-                            <input type="password" required className="inscription-password-input" />
+                            <input type="password" name='password' required className="inscription-password-input" onChange={handleOnChange} />
                         </div>
                         <div className="inscription-confirm-password">
                             <label className="inscription-confirm-password-label">Confirmer le mot de passe</label><br/>
-                            <input type="password" required className="inscription-confirm-password-input" />
+                            <input type="password" name='password' required className="inscription-confirm-password-input" onChange={handleOnChange} />
                         </div>
                     </div>
                     {/* Autres champs du formulaire */}
-                    <button className="inscription-button">S'inscrire →</button>
+                    <button className="inscription-button" onClick={()=>posterUser()}>S'inscrire →</button>
                    
                 </form>
             </div>
