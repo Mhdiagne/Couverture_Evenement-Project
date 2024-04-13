@@ -39,12 +39,13 @@ public class LoginController {
 		String mail = auth.getName();
 
 		Long idu = utilisateurService.getIdMail(mail);
-
 		String roleu = utilisateurService.getRoleMail(mail);
+		String unom = utilisateurService.getNomMail(mail);
+		String uprenom = utilisateurService.getPrenomMail(mail);
 
 
 		// Generate token
-		String jwts = jwtService.getToken(auth.getName(), idu, roleu);
+		String jwts = jwtService.getToken(auth.getName(), idu, roleu,uprenom,unom);
 		// Build response with the generated token
 		return ResponseEntity.ok()
 			.header(HttpHeaders.AUTHORIZATION, "Bearer " + jwts)

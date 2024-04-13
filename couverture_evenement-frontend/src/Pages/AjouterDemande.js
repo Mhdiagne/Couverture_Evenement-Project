@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../Components/Header';
+import '../assets/css/ajouterDemande.css'
+import FormDemande from '../Components/FormDemande';
+
 
 const AjouterDemande = () => {
+
+
         return (
             <div>
-            <Header/>
-            <div className="contenaire">
-                <h2> Ajouter Demande </h2>
-            </div>
+                <Header/>
+                <FormDemande />
             </div>
         );
 }

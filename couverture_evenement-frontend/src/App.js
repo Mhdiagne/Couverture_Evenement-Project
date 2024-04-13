@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Menu from './Pages/Menu';
 import AjouterDemande from './Pages/AjouterDemande';
@@ -14,16 +14,16 @@ import Login from './Pages/Login';
 function App() {
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Menu />} />
+          <Route path="/menu" element={<Menu />} />
           <Route path="/ajouter-demande" element={<AjouterDemande/>} /> 
           <Route path="/voir-mes-demandes" element={<VoirMesDemandes />} />
           <Route path="/prestataires-disponibles" element={<PrestatairesDisponibles />} />
           <Route path="/suivre-ma-demande" element={<SuivreMaDemande />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }

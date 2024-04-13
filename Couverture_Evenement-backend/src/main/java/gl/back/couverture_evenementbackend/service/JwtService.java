@@ -17,11 +17,13 @@ public class JwtService {
     static final String PREFIX = "Bearer";
     static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 	
-    public String getToken(String mail, Long id, String role ) {
+    public String getToken(String mail, Long id, String role, String prenom, String nom ) {
         String token = Jwts.builder()
             .setSubject(mail)
 			.claim("id", id)
 			.claim("role",role)
+				.claim("prenom",prenom)
+				.claim("nom",nom)
             .setExpiration(new Date(System.currentTimeMillis()+EXPIRATIONTIME))
             .signWith(key)
             .compact();
