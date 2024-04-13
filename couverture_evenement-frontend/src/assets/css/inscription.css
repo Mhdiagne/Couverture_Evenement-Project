@@ -1,0 +1,256 @@
+/* inscription.css */
+/* SPECIALLLLLLLLLLLLLLLLLLL */
+.inscription-container1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0; /* Ajustez la valeur de rembourrage selon vos besoins */
+  }
+  
+  .content {
+    display: flex;
+    align-items: center;
+   
+  }
+
+  
+  .logo {
+    margin-right: 8cm; /* Espacement de 5 cm entre le logo et le titre */
+  }
+  
+  .inscription-title {
+    text-align: center;
+    margin: 0; /* Réinitialise les marges pour éviter l'espace supplémentaire */
+  }
+  
+  .inscription-subtitle {
+    font-size: 18px; /* Ajustez la taille du sous-titre selon vos préférences */
+  }
+  
+/* --------------------------- */
+/* ============================================= */
+.custom-file-upload {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .custom-file-upload input[type="file"] {
+    display: none;
+  }
+  
+  .custom-file-upload label {
+    background-color: var(--uasz-vert-2);
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .custom-file-upload label:hover {
+    background-color: var(--uasz-vert-1);
+  }
+  #imagePreview {
+    width: 100px;
+    height: 100px;
+    margin-left: 3rem;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  
+  #imagePreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }  
+/* ==================SSSSSSSSSSSSSSSSSSSSSSS============== */
+.inscription-name {
+    margin-bottom: 20px;
+  }
+  
+  .inscription-name-label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .inscription-name-input {
+    width: 20rem;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+  }
+  
+
+  
+/* ===================ASASASASSASA========================= */
+/* Suite de inscription.css */
+
+/* Partie droite du formulaire */
+.inscription-right {
+    flex: 1; /* Utilisation de tout l'espace disponible */
+    padding-left: 20px; /* Espacement entre les deux parties */
+  }
+  
+  /* Champs de saisie du formulaire (partie droite) */
+  .inscription-gender,
+  .inscription-email,
+  .inscription-password,
+  .inscription-confirm-password {
+    margin-bottom: 20px;
+    
+  }
+  
+  .inscription-gender-label,
+  .inscription-email-label,
+  .inscription-password-label,
+  .inscription-confirm-password-label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .inscription-gender-options {
+    display: flex;
+  }
+  
+  .inscription-gender-options label {
+    margin-right: 20px; /* Espacement entre les options */
+  }
+  
+  .inscription-email-input,
+  .inscription-password-input,
+  .inscription-confirm-password-input {
+    width: 20rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Bouton d'inscription */
+  .inscription-button {
+    background-color: var(--uasz-vert-2);
+    width: 7rem;
+    height: 2.3rem;
+    color: #fff;
+    border: none;
+    margin: 10rem;
+    padding: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .inscription-button:hover {
+    background-color: var(--uasz-vert-1);
+    
+  }
+  
+/* ======================================================== */
+/* Conteneur principal */
+.inscription-container {
+    max-width: 100%; /* Largeur maximale du formulaire */
+    height: 400%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff; /* Couleur de fond */
+    /* border-radius: 10px; Coins arrondis */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); Ombre légère */
+  }
+  
+  /* Titre */
+  .inscription-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Sous-titre */
+  .inscription-subtitle {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  /* Liens */
+  /* .inscription-link {
+    color: #007bff;
+    text-decoration: none;
+  } */
+  
+  /* Formulaire */
+  .inscription-form {
+    display: flex;
+  }
+  
+  /* Partie gauche du formulaire */
+  .inscription-left {
+    flex: 1; /* Utilisation de tout l'espace disponible */
+    padding-right: 20px; /* Espacement entre les deux parties */
+  }
+  
+  /* Partie droite du formulaire */
+  .inscription-right {
+    flex: 1; /* Utilisation de tout l'espace disponible */
+    padding-left: 20px; /* Espacement entre les deux parties */
+    padding-top: 28px;
+
+  }
+  
+  /* Photo de profil */
+  .inscription-profile {
+    margin-bottom: 20px;
+  }
+  
+  .inscription-profile-label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .inscription-profile-upload {
+    display: flex;
+    align-items: center;
+  }
+  
+  .inscription-profile-input {
+    display: none; /* Masquer le champ de téléchargement */
+  }
+  
+ */
+  
+  /* Champs de saisie */
+  .inscription-form-group {
+    margin-bottom: 20px;
+  }
+  
+  .inscription-label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .inscription-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+
+  
+  /* Texte centré */
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Espacement entre les éléments */
+  .br {
+    margin-bottom: 20px;
+  }
+  
+  /* Survol des liens */
+  .inscription-link:hover {
+    text-decoration: underline;
+  }
+  

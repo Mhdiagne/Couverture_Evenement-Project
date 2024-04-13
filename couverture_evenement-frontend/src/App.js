@@ -7,6 +7,8 @@ import VoirMesDemandes from './Pages/VoirMesDemandes';
 import PrestatairesDisponibles from './Pages/PrestatairesDisponibles';
 import SuivreMaDemande from './Pages/SuivreMaDemande';
 import Login from './Pages/Login';
+import Inscription from './Pages/Inscription';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -22,6 +24,7 @@ function App() {
           <Route path="/prestataires-disponibles" element={<PrestatairesDisponibles />} />
           <Route path="/suivre-ma-demande" element={<SuivreMaDemande />} />
           <Route path="/" element={<Login />} />
+          <Route path="/inscription" element={<Inscription />} />
         </Routes>
       </BrowserRouter>
     </div>
