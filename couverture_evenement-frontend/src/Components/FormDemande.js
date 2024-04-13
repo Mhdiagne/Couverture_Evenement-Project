@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Autocomplete,InputAdornment,TextField,Button } from '@mui/material';
+import { Autocomplete, TextField, Button, InputAdornment } from '@mui/material';
 import Box from '@mui/material/Box';
 import { accountService } from '../service/accountService';
 import { SERVER_URL } from '../constante';
 import AddService from './AddService';
+import event from "../assets/svg/welcome-animate.svg"
 
 const FormDemande = () => {
-
     const list = ["Familliale","Religieuse","Seminaire", "Professionel","Autres...",];
 
     const [open, setOpen] = useState(false);
@@ -28,7 +28,7 @@ const FormDemande = () => {
         });
     };
 
-    const handleTypeEvenementChange = ( evt,newValue) => {
+    const handleTypeEvenementChange = ( evt, newValue) => {
         setData({
           ...data,
           typeEvenement: newValue,
@@ -37,7 +37,6 @@ const FormDemande = () => {
 
     const postEvenement = () => {
         const token = accountService.getToken("jwt");
-        console.log(token);
         fetch(SERVER_URL + "evenement/create", {
           method: "POST",
           headers: { Authorization: token, 'Content-Type': 'application/json' },
@@ -46,14 +45,14 @@ const FormDemande = () => {
         .then(response => {
           if (!response.ok) {
             throw new Error('Erreur de connexion au serveur');
-        }
-        if (response.status === 200) {
+          }
+          if (response.status === 200) {
             setOpen(true);
             alert("Votre évènement est créé avec succès ! ");
             return response.json();    
-        }
-        alert("Erreur de création");
-        return null
+          }
+          alert("Erreur de création");
+          return null;
         })
         .then(data=>{
             if (data) {
@@ -67,67 +66,110 @@ const FormDemande = () => {
 
     return (
         <div>
-            <div className="contenaire">
-                <h3> Creer votre Demande </h3>
-                <div className='formulaireD' >
-                    <Box sx={{ width: '700px', display: 'flex', flexWrap: 'wrap' }}>
-                        <TextField id="nomEvenement" sx={{ mb:2, width:"325px"}} 
-                        label="Nom Evenement" variant="outlined" 
-                        // value={dataIn.nomEvenement}
-                        name='nom'
-                        onChange={handleChange} required 
-                        />                
-                        <Autocomplete
-                                sx={{ mb:2, ml:2, width:"325px"}}
-                                id="typeEvenement"
-                                options={list}
-                                renderInput={(params) => (
-                                    <TextField
-                                    {...params}
-                                    variant="outlined"
-                                    label="Type d'Evenement"
-                                    />
-                                )}
-                                // value={dataIn.typeEvenement}
-                                onChange={handleTypeEvenementChange}      
-                                required
-                        />
-
-                        <TextField type="Date" id="date-evenement"  sx={{ mb:2, width:"225px"}} 
-                        variant="outlined" 
-                        onChange={handleChange} 
-                        //value={dataIn.dateEvenement} 
-                        name='dateEvenement' required />
-                        <TextField type='number' id="duree" sx={{ mb:2, ml:2, width:"150px"}} label="Duree" variant="outlined" 
+            <br/>
+            <h3> <b>Création d'une demande de couverture</b> </h3>
+        <div className='contenaire'>
+            
+        <Box sx={{ maxWidth: 600, ml:5 }}>
+                <form >
+                    <TextField
+                        id="nomEvenement"
+                        label="Nom Evenement"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
                         onChange={handleChange}
-                        InputProps={{endAdornment: <InputAdornment position="end">heures</InputAdornment>,}}
-                        //value={dataIn.duree} 
-                        name='duree' required />
-                        <TextField id="lieu" sx={{ mb:2, ml:2, width:"260px"}} label="Lieu" variant="outlined" 
-                        onChange={handleChange} 
-                        //value={dataIn.lieu} 
-                        name='lieu' required />
-                        <TextField
-                            id="outlined-multiline-static"
-                            label="Description"
-                            multiline
-                            sx={{ mb:3,width:"667px"}}
-                            rows={2}
-                            variant="outlined"
-                            onChange={handleChange}
-                            //value={dataIn.description}
-                            name='description'
-                            required
-                        />
-                        <Button sx={{m: 'auto', p: 1}} id="valider" onClick={postEvenement} variant='contained'>Enregistrer</Button>
-                    </Box>
-                    {
-                        open && <AddService open={open} ide={idE} />
-                    }
-                    
-                </div>
-            </div> 
+                        name="nom"
+                        required
+                    />
+                    <Autocomplete
+                        id="typeEvenement"
+                        options={list}
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                label="Type d'Evenement"
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                required
+                            />
+                        )}
+                        onChange={handleTypeEvenementChange}
+                    />
+                    <TextField
+                        id="date-evenement"
+                        label="Date de l'Evenement"
+                        type="date"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        onChange={handleChange}
+                        name="dateEvenement"
+                        required
+                    />
+                    <TextField
+                        id="duree"
+                        label="Durée"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    heures
+                                </InputAdornment>
+                            ),
+                        }}
+                        onChange={handleChange}
+                        name="duree"
+                        required
+                    />
+                    <TextField
+                        id="lieu"
+                        label="Lieu"
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        onChange={handleChange}
+                        name="lieu"
+                        required
+                    />
+                    <TextField
+                        id="description"
+                        label="Description"
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        fullWidth
+                        margin="normal"
+                        onChange={handleChange}
+                        name="description"
+                        required
+                    />
+                    <Button
+                        id="valider"
+                        onClick={postEvenement}
+                        variant="contained"
+                        fullWidth
+                    //     sx={{ mt: 7 , width:'50rem' }}
+                     >
+                        Enregistrer
+                    </Button>
+                </form>
+            </Box>
+            {
+                open && <AddService open={open} ide={idE} />
+            }
+             <div className="menu-svg">
+             <img alt="event" src={event} width={"600px"} />
         </div>
+        </div>
+       
+    </div>
     );
 };
 
