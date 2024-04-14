@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Autocomplete,InputAdornment,DialogContent,DialogActions,Dialog,TextField,Button } from '@mui/material';
 import { accountService } from '../service/accountService';
 import { SERVER_URL } from '../constante';
-
+import "../assets/css/style2.css";
 const AddService = (props) => {
 
     const [selectedService, setSelectedService] = useState(null);

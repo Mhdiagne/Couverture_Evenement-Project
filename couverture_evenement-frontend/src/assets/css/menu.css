@@ -21,17 +21,18 @@
 }
 
 .logo {
-    margin-left: 3rem; 
+    margin-left: 2rem; 
 }
 
 .header-title {
-    margin-left: 0cm; 
     color: white; 
     font-size: 2.3rem;
     font-weight: 600;
+    margin-right: 5rem;
+    margin-top: 1rem;
 }
 .avatar {
-    margin-left: 4cm;
+    margin-left: 7cm;
 }
 .fa-icon1 {
     font-size: 15px; 

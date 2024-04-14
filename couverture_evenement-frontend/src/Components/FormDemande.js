@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import { accountService } from '../service/accountService';
 import { SERVER_URL } from '../constante';
 import AddService from './AddService';
-import event from "../assets/svg/welcome-animate.svg"
+import event from "../assets/svg/work-anniversary-animate.svg"
 
 const FormDemande = () => {
     const list = ["Familliale","Religieuse","Seminaire", "Professionel","Autres...",];
@@ -66,7 +66,7 @@ const FormDemande = () => {
 
     return (
         <div>
-            <br/>
+            
             <h3> <b>Création d'une demande de couverture</b> </h3>
         <div className='contenaire'>
             
@@ -151,7 +151,7 @@ const FormDemande = () => {
                         required
                     />
                     <Button
-                        id="valider"
+                        id="valider1"
                         onClick={postEvenement}
                         variant="contained"
                         fullWidth

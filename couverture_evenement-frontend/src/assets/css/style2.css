@@ -1,7 +1,34 @@
 /* Page prestataire*/
 
 /*Recherche prestataire*/
+@import url(_variable.css);
 
+#Edit{
+    color:var(--uasz-vert-2);
+}
+#Delete{
+    color:red;
+}
+#details{
+    background-color: var(--uasz-vert-1) !important;
+    color: white !important;
+    font-weight: bold;
+}
+#details:hover{
+    background-color: var(--uasz-vert-2) !important;
+    color: rgb(255, 255, 255) !important;
+
+}
+#ajouterService{
+    background-color: var(--uasz-vert-2);
+    font-size: large;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-family: "Poppins";
+}
+#ajouterService:hover{
+    background-color: var(--uasz-vert-1);
+}
 .display{
     display: flex;
     justify-content:center;
@@ -110,14 +137,20 @@
     font-weight: 60px;
 }
 #valider , #annuler {
-    width: 110px;
-    height: 45px;
-    border-radius: 20px !important;
+    width: auto;
+    height: 4vh;
+    border-radius: 8px !important;
     border: none;
     font-weight: bold;
     cursor: pointer;
 
 }    
+
+#all-form > div.MuiDialog-container.MuiDialog-scrollPaper.css-hz1bth-MuiDialog-container > div > div.MuiDialogActions-root.MuiDialogActions-spacing.css-1x04oa2-MuiDialogActions-root{
+    display: ruby;
+    margin-left: 40rem;
+
+}
 #valider:hover {
     font-size: 1.1rem;
     box-shadow: #fdfaf1;
@@ -127,13 +160,24 @@
     box-shadow: 12px #ac9552;
 }
 
-#valider{
-    background-color: var(--bs-primary);
-    color :rgb(0, 0, 0);
+#valider1{
+    background-color: var(--uasz-vert-2);
+    color :rgb(255, 255, 255);
+    text-align: center;
+    width: 10rem;
+    font-size: 1.1rem;
+    
+    box-shadow: #fdfaf1;
+
 
 }
+
+#valider1:hover{
+    background-color: var(--uasz-vert-1);
+    color :rgb(255, 255, 255);
+}
 #annuler{
-    background-color: var(--bs-dark);
+    background-color: var(--uasz-vert-1) !important;
     color :rgb(255, 255, 255);
 
 }
