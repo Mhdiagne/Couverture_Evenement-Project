@@ -14,6 +14,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { DataGrid } from '@mui/x-data-grid';
 import '../assets/css/ajouterDemande.css';
+import { jwtDecode } from 'jwt-decode';
 
 const PrestatairesDisponibles = () => {
 
@@ -61,7 +62,6 @@ const PrestatairesDisponibles = () => {
         },
         {
             field:'btn1',
-            headerName: "Prestataires",
             sortable:false,
             with:200,
             filterable: false,
@@ -141,7 +141,8 @@ const PrestatairesDisponibles = () => {
     const fetchEvenement = async () => {
         try {
             const token = accountService.getToken("jwt");
-            const response = await fetch(SERVER_URL + "evenement", {
+            const id = jwtDecode(token).id;
+            const response = await fetch(SERVER_URL + `evenement/evenementofuser/${id}`, {
                 headers: { Authorization: token },
             });
     
@@ -190,7 +191,8 @@ const PrestatairesDisponibles = () => {
         <div>
             <Header/>   
             <h2>Prestataires Disponibles </h2>
-            <div className="contenaire">
+            <br/>
+            <div className="conten">
                 <Accordion>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}

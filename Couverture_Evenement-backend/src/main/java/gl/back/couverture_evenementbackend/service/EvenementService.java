@@ -6,6 +6,7 @@ import gl.back.couverture_evenementbackend.entity.Prestation;
 import gl.back.couverture_evenementbackend.entity.Utilisateur;
 import gl.back.couverture_evenementbackend.repository.EvenementRepository;
 import gl.back.couverture_evenementbackend.repository.PrestationRepository;
+import gl.back.couverture_evenementbackend.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,9 @@ public class EvenementService {
     private  PrestationService prestationService;
 
     @Autowired
+    private UtilisateurRepository utilisateurRepository;
+
+    @Autowired
     private gl.back.couverture_evenementbackend.service.prestataireService prestataireService;
 
     public List<Evenement> getEvenementsArchives() {
@@ -34,11 +38,14 @@ public class EvenementService {
         return evenementRepository.findAll();
     }
 
+    public List<Evenement> getEvenementsOfUser(Long id) { return evenementRepository.findByUserId(id); }
+
     public Evenement getOneEvenement(Long id) {
         return evenementRepository.findById(id).get();
     }
 
     public Evenement createEvenement(Evenement E) {
+        E.setValide("en cour de traitement");
         return evenementRepository.save(E);
     }
 
@@ -81,6 +88,8 @@ public class EvenementService {
     public void addUserToEvenement(Long idE, Long idU) {
         Evenement event = getOneEvenement(idE);
         Utilisateur utilisateur = utilisateurService.getUtilisateurById(idU);
+        utilisateur.getEvenements().add(event);
+        utilisateurRepository.save(utilisateur);
         event.getUsers().add(utilisateur);
         evenementRepository.save(event);
     }

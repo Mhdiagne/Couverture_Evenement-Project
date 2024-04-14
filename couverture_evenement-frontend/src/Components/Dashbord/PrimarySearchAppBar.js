@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -13,11 +13,13 @@ import logo from "../../assets/img/logo.png"
 import MoreIcon from '@mui/icons-material/MoreVert';
 import "../../assets/css/styleDashbord.css";
 import '../../assets/css/style2.css'
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import avatar from '../../assets/img/MyAvatar.svg'
-
-
-
+import { accountService } from '../../service/accountService';
+import { Avatar, ListItemIcon, Tooltip } from '@mui/material';
+import Logout from '@mui/icons-material/Logout';
+import { jwtDecode } from 'jwt-decode';
+import { SERVER_URL } from '../../constante';
 
 
 export default function PrimarySearchAppBar() {
@@ -26,24 +28,67 @@ export default function PrimarySearchAppBar() {
   const [username, setUsername] = useState("");
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const [prenom, setPrenom] = useState('');
+  const [nom, setNom] = useState('');
+  const open = Boolean(anchorEl);
+  const token = accountService.getToken("jwt");
+  const [imgSrc, setImgSrc] = useState('');
+  const [navigate, setNavigate] = useState(false);
+
+  useEffect(() => {
+    if (token) {
+        const client = jwtDecode(token);
+        setNom(client.nom); setPrenom(client.prenom);
+        if (client.id!==0) {
+            recupImage(client.id,token);
+        }
+    } else {
+        console.error('Le token n\'est pas une chaîne valide.');
+    }
+}, [token]);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+      accountService.logout();
+      setNavigate(true);
+      console.log("clean");
+  }
+
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
 
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
+  const recupImage = (id, token) => {
+    fetch(SERVER_URL + `utilisateur/${id}/get_img`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération de l\'image');
+        }
+        return response.blob();
+    })
+    .then(imageBlob => {
+        const imageUrl = URL.createObjectURL(imageBlob);
+        setImgSrc(imageUrl);
+    })
+    .catch(error => {
+        console.error('Erreur lors de la récupération de l\'image:', error);
+    });
+  }
  
 
   const menuId = 'primary-search-account-menu';
@@ -74,6 +119,10 @@ export default function PrimarySearchAppBar() {
         </Menu>
     
   );
+
+  if (navigate){
+    return <Navigate to={"/"}/>
+}
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
 
@@ -106,23 +155,68 @@ export default function PrimarySearchAppBar() {
                   <h1 id='special'>Admin Dashboard</h1>
 
               </Typography>
-          
-         
-       
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <text > <strong>Bonjour ,</strong> &nbsp;
-          <text id='text-special'> {username}</text>
-        </text>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+    <Box sx={{ flexGrow: 1 }} />
+    <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }} className="inf">
+                <Tooltip title="Account settings" style={{color: 'white'}}>
+                    <IconButton
+                        onClick={handleClick}
+                        size="small"
+                        sx={{ ml: 2 }}
+                        aria-controls={open ? 'account-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                    >
+                        <Avatar src={imgSrc} sx={{ width: 40, height: 40 }} />
+                    </IconButton>
+                    {prenom+" "+nom}
+                </Tooltip>
+            </Box>
+            <Menu
+                anchorEl={anchorEl}
+                id="account-menu"
+                open={open}
+                onClose={handleClose}
+                onClick={handleClose}
+                PaperProps={{
+                elevation: 0,
+                sx: {
+                    overflow: 'visible',
+                    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                    mt: 1.5,
+                    '& .MuiAvatar-root': {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                    },
+                    '&::before': {
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: 'background.paper',
+                    transform: 'translateY(-50%) rotate(45deg)',
+                    zIndex: 0,
+                    },
+                },
+                }}
+                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+            >
+                <MenuItem onClick={handleClose}>
+                <Avatar /> Profile
+                </MenuItem>
+                <MenuItem onClick={handleLogout}>
+                <ListItemIcon>
+                    <Logout fontSize="small" />
+                </ListItemIcon>
+                Logout
+                </MenuItem>
+            </Menu>
+    {/* <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
            
             <IconButton
               size="large"
@@ -148,7 +242,7 @@ export default function PrimarySearchAppBar() {
               <MoreIcon />
             </IconButton>
 
-          </Box>
+          </Box> */}
         </Toolbar>
       </AppBar>
 

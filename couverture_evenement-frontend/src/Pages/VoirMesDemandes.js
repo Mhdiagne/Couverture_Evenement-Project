@@ -4,6 +4,7 @@ import { SERVER_URL } from '../constante';
 import { accountService } from '../service/accountService';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { jwtDecode } from 'jwt-decode';
 
 const VoirMesDemandes = () => {
 
@@ -16,7 +17,8 @@ const VoirMesDemandes = () => {
     const fetchEvenement = async () => {
         try {
             const token = accountService.getToken("jwt");
-            const response = await fetch(SERVER_URL + "evenement", {
+            const id = jwtDecode(token).id;
+            const response = await fetch(SERVER_URL + `evenement/evenementofuser/${id}`, {
                 headers: { Authorization: token },
             });
     
@@ -36,11 +38,11 @@ const VoirMesDemandes = () => {
             <div>
             <Header/>
                 <h2 style={{textAlign:'center', m:'4rem'}}>Liste de tous mes demandes </h2>
-                <div className="contenaire">
+                <div className="conten">
                 {event.map(e=>(
                     <Accordion sx={{width: '60%', m:'auto'}}>
                         <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
+                            expandIcon={<ExpandMoreIcon sx={{color:'black !important'}} />}
                             aria-controls="panel1-content"
                             id="panel1-header"
                         >
