@@ -1,7 +1,7 @@
 package gl.back.couverture_evenementbackend.restController;
 
 
-import gl.back.couverture_evenementbackend.CouvertureEvenementBackendApplication;
+//import gl.back.couverture_evenementbackend.CouvertureEvenementBackendApplication;
 import gl.back.couverture_evenementbackend.entity.Utilisateur;
 import gl.back.couverture_evenementbackend.repository.UtilisateurRepository;
 import gl.back.couverture_evenementbackend.service.UtilisateurService;
@@ -27,7 +27,7 @@ public class UtilisateurController {
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
-    private static final Logger logger = LoggerFactory.getLogger(CouvertureEvenementBackendApplication.class);
+//    private static final Logger logger = LoggerFactory.getLogger(CouvertureEvenementBackendApplication.class);
 
     @GetMapping
     public ResponseEntity<List<Utilisateur>> getAllUtilisateur() {
@@ -75,7 +75,7 @@ public class UtilisateurController {
         user.setPassword(password);
         Utilisateur userF = utilisateurService.createUtilisateur(user);
         utilisateurService.addImageToUtilisateur(file, userF.getId_user());
-        logger.info("Inscription réussie!");
+//        logger.info("Inscription réussie!");
         return userF;
     }
 

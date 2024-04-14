@@ -106,45 +106,44 @@ const VoirMesDemandes = () => {
                         Détails de {selectedEvent && selectedEvent.nom}
                     </Typography>
                     {selectedEvent && (
-    <div>
-        <Typography id="modal-modal-description" sx={{ mt: 2, fontFamily:"Poppins" }}>
-            <b>Nom Evenement :</b> {selectedEvent.nom} <br />
-            <b>Type Evenement : </b>  {selectedEvent.typeEvenement} <br />
-            <b>Lieu Evenement : </b>  {selectedEvent.lieu} <br />
-            <b>Durée Evenement : </b>  {selectedEvent.duree} <br />
-            <b>Date Evenement : </b>  {selectedEvent.dateEvenement} <br />
-            <b>Validité de l'evenement : </b>  {selectedEvent.valide} <br />
+                        <div>
+                            <Typography id="modal-modal-description" sx={{ mt: 2, fontFamily:"Poppins" }}>
+                                <b>Nom Evenement :</b> {selectedEvent.nom} <br />
+                                <b>Type Evenement : </b>  {selectedEvent.typeEvenement} <br />
+                                <b>Lieu Evenement : </b>  {selectedEvent.lieu} <br />
+                                <b>Durée Evenement : </b>  {selectedEvent.duree} <br />
+                                <b>Date Evenement : </b>  {selectedEvent.dateEvenement} <br />
+                                <b>Etat de la demande : </b>  {selectedEvent.valide} <br />
 
-            {/* Affichage des prestataires */}
-            <h5>  ▶ Prestataires </h5>
-            {selectedEvent.prestataires.map((prestataire, index) => (
-                <div key={index}>
-                    <b>Nom prestataire : </b>  {prestataire && prestataire.nom} <br />
-                    <b>Email prestataire : </b>  {prestataire && prestataire.mail} <br />
-                    <b>Téléphone prestataire : </b>  {prestataire && prestataire.telephone} <br />
-                </div>
-            ))}
+                                {/* Affichage des prestataires */}
+                                <h5>  ▶ Prestataires </h5>
+                                {selectedEvent.prestataires.map((prestataire, index) => (
+                                    <div key={index}>
+                                        <b>Nom prestataire : </b>  {prestataire && prestataire.nom} <br />
+                                        <b>Email prestataire : </b>  {prestataire && prestataire.mail} <br />
+                                        <b>Téléphone prestataire : </b>  {prestataire && prestataire.telephone} <br />
+                                    </div>
+                                ))}
 
-            {/* Affichage des prestations */}
-            <h5>  ▶ Prestations </h5>
-            {selectedEvent.prestations.map((prestation, index) => (
-                <div key={index}>
-                    <b>Libelle : </b>  {prestation && prestation.libelle} <br />
-                </div>
-            ))}
+                                {/* Affichage des prestations */}
+                                <h5>  ▶ Prestations </h5>
+                                {selectedEvent.prestations.map((prestation, index) => (
+                                    <div key={index}>
+                                        <b>Libelle : </b>  {prestation && prestation.libelle} <br />
+                                    </div>
+                                ))}
 
-            {/* Affichage du client */}
-            <h5>  ▶ Client </h5>
-            {selectedEvent.users.map((user, index) => (
-            <div key={index}>
-                <b>Client : </b>  {user.prenom} {user.nom} <br />
-                <b>Contact Client : </b>  {user.mail} <br />
-            </div>
-            ))}
-        </Typography>
-    </div>
-)}
-
+                                {/* Affichage du client */}
+                                <h5>  ▶ Client </h5>
+                                {selectedEvent.users.map((user, index) => (
+                                <div key={index}>
+                                    <b>Client : </b>  {user.prenom} {user.nom} <br />
+                                    <b>Contact Client : </b>  {user.mail} <br />
+                                </div>
+                                ))}
+                            </Typography>
+                        </div>
+                    )}
                 </Box>
             </Modal>
         </div>

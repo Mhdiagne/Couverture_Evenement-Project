@@ -98,4 +98,16 @@ public class EvenementService {
         evenementRepository.save(event);
     }
 
+    public Evenement updateValide(Long id, Evenement e) {
+        Evenement oldE = getOneEvenement(id);
+        oldE.setValide(e.getValide());
+        return evenementRepository.save(oldE);
+    }
+
+    public Evenement updateArchiver(Long id) {
+        Evenement oldE = getOneEvenement(id);
+        oldE.setArchive(true);
+        return evenementRepository.save(oldE);
+    }
+
 }
