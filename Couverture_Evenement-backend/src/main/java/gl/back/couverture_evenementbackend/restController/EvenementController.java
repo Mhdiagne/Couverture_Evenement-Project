@@ -85,4 +85,14 @@ public class EvenementController {
     public List<Evenement> getEvenementsOfUser(@PathVariable Long idU) {
         return evenementService.getEvenementsOfUser(idU);
     }
+
+    @PatchMapping("/validate/{id}")
+    public Evenement validateEvenement(@PathVariable Long id, @RequestBody Evenement e) {
+        return evenementService.updateValide(id, e);
+    }
+
+    @PatchMapping("/archiver/{id}")
+    public Evenement archiverEvenement(@PathVariable Long id) {
+        return evenementService.updateArchiver(id);
+    }
 }
