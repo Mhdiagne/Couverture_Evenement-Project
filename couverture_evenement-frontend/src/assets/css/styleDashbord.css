@@ -1,6 +1,12 @@
 /* src/components/Header.css */
 @import url(_variable.css);
 /* =================================== */
+#NavSpecial{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
 .sidebar-icon {
     color: black !important; 
   }

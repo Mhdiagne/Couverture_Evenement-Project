@@ -34,13 +34,13 @@ const Menu = () => {
                             <span className="icon-text3">Prestataires disponibles</span>
                         </button>
                     </Link>
-                    <br />
+                    {/* <br />
                     <Link to="/suivre-ma-demande">
                         <button className='nav-button'>
                             <i className="fas fa-check-circle fa-icon"></i>
                             <span className="icon-text4">Suivre ma demande</span>
                         </button>
-                    </Link>
+                    </Link> */}
                 </div>
                 <div className="menu-svg">
                     <img alt="event" src={event} width={"600px"} />
