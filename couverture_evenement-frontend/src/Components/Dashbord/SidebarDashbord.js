@@ -15,10 +15,14 @@ const SidebarDashBord = () => {
                         <Link to = '/admin/home'> <HomeIcon className="sidebar-icon" /> Home DashBord</Link>
                     </li>
                     <li>
-                        <Link to = '/admin/evenement'> <PersonPinIcon className="sidebar-icon" /> Evénèments </Link>
+                        <Link to = '/admin/evenement'> <AssignmentTurnedInIcon className="sidebar-icon" /> Evénèments </Link>
                     </li>
                     <li>
                         <Link to = '/admin/prestations'> <AssignmentTurnedInIcon className="sidebar-icon" /> Prestations</Link>
+                    </li>
+                    
+                    <li>
+                        <Link to = '/admin/services'> <AssignmentTurnedInIcon className="sidebar-icon" /> Services</Link>
                     </li>
                     <li>
                         <Link to = '/admin/rapports'> <AssignmentTurnedInIcon className="sidebar-icon" /> Rapports</Link>

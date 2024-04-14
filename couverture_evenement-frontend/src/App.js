@@ -14,6 +14,7 @@ import ServicePrestation from './Components/Dashbord/ServicePrestation';
 import HomeDashBord from './Components/Dashbord/HomeDashBord';
 import Rapports from './Components/Dashbord/Rapports';
 import AllEvent from './Components/Dashbord/AllEvent';
+import Services from './Components/Dashbord/Services';
 
 
 
@@ -31,6 +32,7 @@ function App() {
           <Route path='/admin/prestations' element={<ServicePrestation/>}/>
           <Route path='/admin/rapports' element={<Rapports/>}/>
           <Route path= '/admin/evenement' element={<AllEvent/>}/>
+          <Route path= '/admin/services' element={<Services/>}/>
           {/* -------------------------------------------------------- */}
           <Route path="/ajouter-demande" element={<AjouterDemande/>} /> 
           <Route path="/voir-mes-demandes" element={<VoirMesDemandes />} />

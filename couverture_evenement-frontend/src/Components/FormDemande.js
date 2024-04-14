@@ -66,7 +66,7 @@ const FormDemande = () => {
 
     return (
         <div>
-            <br/>
+            
             <h3> <b>Création d'une demande de couverture</b> </h3>
         <div className='contenaire'>
             
@@ -151,7 +151,7 @@ const FormDemande = () => {
                         required
                     />
                     <Button
-                        id="valider"
+                        id="valider1"
                         onClick={postEvenement}
                         variant="contained"
                         fullWidth

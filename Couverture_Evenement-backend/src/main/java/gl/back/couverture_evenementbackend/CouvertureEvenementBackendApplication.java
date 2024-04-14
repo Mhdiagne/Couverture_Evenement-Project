@@ -112,6 +112,7 @@ public class CouvertureEvenementBackendApplication implements CommandLineRunner 
 		evenement4.setPrestations(prestations);
 
 
+
 		Evenement evenement5 = new Evenement();
 		evenement5.setNom("Exposition d'art contemporain");evenement5.setTypeEvenement("Exposition");
 		evenement5.setArchive(true);

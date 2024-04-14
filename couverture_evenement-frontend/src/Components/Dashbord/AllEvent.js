@@ -47,7 +47,7 @@ const AllEvent = () => {
             editable: false,
         },
         {
-            field:'btn1',
+            field:'Operations',
 
             sortable:false,
             filterable: false,
