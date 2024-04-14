@@ -88,35 +88,34 @@ public class CouvertureEvenementBackendApplication implements CommandLineRunner 
 		Utilisateur utilisateur1 = new Utilisateur(null,"Doe", "John", "Masculin","1_sung_jinwoo.jpg", "john.doe@example.com", "$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue", "CLIENT",null);
 		Utilisateur utilisateur2 = new Utilisateur(null,"Smith", "Alice", "Féminin",null, "alice.smith@example.com", "$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue", "AGENT",null);
 		Utilisateur utilisateur3 = new Utilisateur(null,"Brown", "Bob", "Masculin",null, "bob.brown@example.com", "$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue", "CLIENT",null);
-		utilisateurRepository.saveAll(Arrays.asList(utilisateur1,utilisateur2,utilisateur3));
+		Utilisateur utilisateur4 = new Utilisateur(null,"Mbacke", "Cheikh ", "Masculin","2_cmc.png", "cmc011@uasz.com", "$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue", "Admin",null);
+		utilisateurRepository.saveAll(Arrays.asList(utilisateur1,utilisateur2,utilisateur3, utilisateur4));
 
 		Evenement evenement1 = new Evenement();
 		evenement1.setNom("Conférence sur l'environnement");evenement1.setTypeEvenement("Conférence");
-		evenement1.setArchive(true);evenement1.setDateEvenement("2024-04-15");evenement1.setDuree(120);
+		evenement1.setArchive(true);evenement1.setDateEvenement(new Date());evenement1.setDuree(120);
 
 
 		Evenement evenement2 = new Evenement();
 		evenement2.setNom("Séminaire de formation");evenement2.setTypeEvenement("Formation");evenement2.setArchive(false);
-		evenement2.setDateEvenement("2024-05-20");evenement2.setDuree(180);evenement2.setPrestations(prestations);
+		evenement2.setDateEvenement(new Date());evenement2.setDuree(180);evenement2.setPrestations(prestations);
 
 
 		Evenement evenement3 = new Evenement();
 		evenement3.setNom("Soirée de gala");evenement3.setTypeEvenement("Soirée");evenement3.setArchive(false);
-		evenement3.setDateEvenement("2024-06-30");evenement3.setDuree(240);
+		evenement3.setDateEvenement(new Date());evenement3.setDuree(240);
 
 
 		Evenement evenement4 = new Evenement();
 		evenement4.setNom("Tournoi de tennis");evenement4.setTypeEvenement("Sport");
 		evenement4.setArchive(true);
-		evenement4.setDateEvenement("2024-07-10");evenement4.setDuree(300);
+		evenement4.setDateEvenement(new Date());evenement4.setDuree(300);
 		evenement4.setPrestations(prestations);
-
-
 
 		Evenement evenement5 = new Evenement();
 		evenement5.setNom("Exposition d'art contemporain");evenement5.setTypeEvenement("Exposition");
 		evenement5.setArchive(true);
-		evenement5.setDateEvenement("2024-08-25");evenement5.setDuree(150);
+		evenement5.setDateEvenement(new Date());evenement5.setDuree(150);
 		evenementRepository.saveAll(Arrays.asList(evenement1,evenement2,evenement3,evenement4,evenement5));
 
 		Prestation prestation1 = new Prestation();prestation1.setLibelle(" Restauration ");
