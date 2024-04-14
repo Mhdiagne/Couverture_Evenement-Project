@@ -23,6 +23,7 @@ public class Evenement {
     private String description;
     private String lieu;
     private boolean archive;
+    @Temporal(TemporalType.DATE)
     private Date dateEvenement;
     private String valide;
     private boolean attribuer;
