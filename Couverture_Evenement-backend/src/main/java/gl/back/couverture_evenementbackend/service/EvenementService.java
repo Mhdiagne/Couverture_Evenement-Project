@@ -64,6 +64,10 @@ public class EvenementService {
         }
     }
 
+/**
+ * @addPrestationToEvenement
+ * 
+ * */
     public void addPrestationToEvenement(Long idE, Long idP) {
         Evenement event = getOneEvenement(idE);
         Prestation service = prestationService.getOnePrestation(idP);
