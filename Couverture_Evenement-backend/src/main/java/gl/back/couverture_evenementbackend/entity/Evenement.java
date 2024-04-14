@@ -23,7 +23,7 @@ public class Evenement {
     private String description;
     private String lieu;
     private boolean archive;
-    private String dateEvenement;
+    private Date dateEvenement;
     private String valide;
     private boolean attribuer;
     private int duree;
