@@ -8,12 +8,12 @@ import PrestatairesDisponibles from './Pages/PrestatairesDisponibles';
 import SuivreMaDemande from './Pages/SuivreMaDemande';
 import Login from './Pages/Login';
 import Inscription from './Pages/Inscription';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import AdminDashbord from './Pages/AdminDashbord';
 import ProfileDashbord from './Components/Dashbord/ProfiledashBord';
 import ServicePrestation from './Components/Dashbord/ServicePrestation';
 import HomeDashBord from './Components/Dashbord/HomeDashBord';
 import Rapports from './Components/Dashbord/Rapports';
+import AllEvent from './Components/Dashbord/AllEvent';
 
 
 
@@ -30,6 +30,7 @@ function App() {
           <Route path='/admin/profile' element={<ProfileDashbord/>}/>
           <Route path='/admin/prestations' element={<ServicePrestation/>}/>
           <Route path='/admin/rapports' element={<Rapports/>}/>
+          <Route path= '/admin/evenement' element={<AllEvent/>}/>
           {/* -------------------------------------------------------- */}
           <Route path="/ajouter-demande" element={<AjouterDemande/>} /> 
           <Route path="/voir-mes-demandes" element={<VoirMesDemandes />} />

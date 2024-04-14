@@ -36,5 +36,5 @@ public class Utilisateur {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "users")
-    private List<Evenement> evenement;
+    private List<Evenement> evenements;
 }

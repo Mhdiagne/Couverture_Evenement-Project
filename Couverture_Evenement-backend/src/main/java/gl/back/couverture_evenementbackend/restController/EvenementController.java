@@ -49,7 +49,9 @@ public class EvenementController {
         String mail = jwtService.getAuthUser(request);
         Utilisateur user =  utilisateurRepository.findUtilisateurByMail(mail)
                 .orElseThrow(()-> new RuntimeException("Client "+mail+" not found"));
-        evenementService.addUserToEvenement(R.getId_Evenement(), user.getId_user());
+        System.out.println(newE.getId_Evenement());
+        Long id = newE.getId_Evenement();
+        evenementService.addUserToEvenement(id, user.getId_user());
         return newE;
     }
 
@@ -71,5 +73,16 @@ public class EvenementController {
     @PostMapping("/{idP}/addPrestataire/{idE}")
     public void addPrestataireToEvent(@PathVariable Long idE, @PathVariable Long idP) {
         evenementService.addPrestataireToEvenement(idE,idP);
+    }
+
+    @PostMapping("/{idU}/addUser/{idE}")
+    public void addUserToEvent(@PathVariable Long idE, @PathVariable Long idU) {
+        evenementService.getOneEvenement(idE).setAttribuer(true);
+        evenementService.addUserToEvenement(idE,idU);
+    }
+
+    @GetMapping("/evenementofuser/{idU}")
+    public List<Evenement> getEvenementsOfUser(@PathVariable Long idU) {
+        return evenementService.getEvenementsOfUser(idU);
     }
 }

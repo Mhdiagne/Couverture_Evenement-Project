@@ -8,6 +8,7 @@ import { useState } from 'react';
 import axios from "axios";
 import { accountService } from '../service/accountService';
 import Menu from './Menu';
+import { jwtDecode } from 'jwt-decode';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -16,10 +17,12 @@ export default function Login() {
 
     const [err, setErr] = useState("");
     const [navig, setNavigate] = useState(false);
+    const [role, setRole] = useState('');
     const [credentials, setCredentials] = useState({
         mail: "",
         password: "",
     });
+
     
     const handleChange = (evt) => {
         const { name, value } = evt.target;
@@ -39,6 +42,8 @@ export default function Login() {
                 const mail = credentials.mail;
                 accountService.getUsername(mail);    
                 sessionStorage.setItem("jwt", response.headers.authorization);
+                const client = jwtDecode(response.headers.authorization);
+                setRole(client.role);
                 setNavigate(true);
                 console.log(navig);
               } else {
@@ -54,8 +59,10 @@ export default function Login() {
         }
     };
 
-    if(navig) {
+    if(navig && role==='CLIENT') {
         return (<Navigate to={"/menu"}/>);
+    }else if (navig) {
+        return (<Navigate to={"/admin"} />)
     }
 
     return (

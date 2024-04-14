@@ -4,7 +4,7 @@ import { SERVER_URL } from '../constante';
 import { accountService } from '../service/accountService';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MyEvent from '../assets/svg/listening-happy-music-animate.svg';
+import { jwtDecode } from 'jwt-decode';
 
 const VoirMesDemandes = () => {
     const [event, setEvent] = useState([]);
@@ -16,7 +16,8 @@ const VoirMesDemandes = () => {
     const fetchEvenement = async () => {
         try {
             const token = accountService.getToken("jwt");
-            const response = await fetch(SERVER_URL + "evenement", {
+            const id = jwtDecode(token).id;
+            const response = await fetch(SERVER_URL + `evenement/evenementofuser/${id}`, {
                 headers: { Authorization: token },
             });
 
@@ -31,36 +32,28 @@ const VoirMesDemandes = () => {
         }
     };
 
-    return (
-        <div>
-            <Header />
-            <h2 style={{ textAlign: 'center', margin: '2rem' }}>Liste de toutes mes demandes</h2>
-            
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                
-                <div style={{ marginRight: '40px' }}>
-                    {event.map((e, index) => (
-                        <Accordion key={index} sx={{ width: '100%', marginRight: '10rem' }}>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon sx={{ color: 'black !important' }} />}
-                                aria-controls="panel1-content"
-                                id="panel1-header"
-                            >
-                                <b>{e.nom} - {e.typeEvenement}</b>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <b>Nom Evenement:</b> {e.nom} <br />
-                                <b>Types Evenement: </b>  {e.typeEvenement}
-                            </AccordionDetails>
-                        </Accordion>
-                    ))}
-                </div>
-                <div >
-                    <img alt="event" src={MyEvent} width={"500px"} />
+        return (
+            <div>
+            <Header/>
+                <h2 style={{textAlign:'center', m:'4rem'}}>Liste de tous mes demandes </h2>
+                <div className="contenaire">
+                {event.map(e=>(
+                    <Accordion sx={{width: '60%', m:'auto'}}>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1-content"
+                            id="panel1-header"
+                        >
+                            {e.nom} {e.typeEvenement}
+                        </AccordionSummary>
+                        <AccordionDetails sx={{display: 'flex',flexWrap:'wrap',justifyContent: 'space-between'}}>
+    
+                        </AccordionDetails>
+                    </Accordion>
+                ))}
                 </div>
             </div>
-        </div>
-    );
+        );
 }
 
 export default VoirMesDemandes;

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class Evenement {
     private boolean archive;
     private String dateEvenement;
     private String valide;
+    private boolean attribuer;
     private int duree;
 
     @ManyToMany
@@ -33,5 +35,5 @@ public class Evenement {
     private List<Prestataire> prestataires;
 
     @ManyToMany
-    private List<Utilisateur> users;
+    private List<Utilisateur> users = new ArrayList<>();
 }

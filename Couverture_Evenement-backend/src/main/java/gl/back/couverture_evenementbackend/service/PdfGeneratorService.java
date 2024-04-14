@@ -40,7 +40,8 @@ public class PdfGeneratorService {
                 table.addCell(evenement.getTypeEvenement());
                 table.addCell(evenement.getDateEvenement());
                 table.addCell(String.valueOf(evenement.getDuree()));
-//                table.addCell(evenement.getUser().getPrenom() + " " + evenement.getUser().getNom());
+                //                table.addCell(evenement.getUser().getPrenom() + " " + evenement.getUser().getNom());
+
             }
 
             // Ajoutez le tableau au document PDF

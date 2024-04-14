@@ -23,9 +23,6 @@ const SidebarDashBord = () => {
                     <li>
                         <Link to = '/admin/rapports'> <AssignmentTurnedInIcon className="sidebar-icon" /> Rapports</Link>
                     </li>
-                  
-
-                   
 
                 </ul>
             </nav>

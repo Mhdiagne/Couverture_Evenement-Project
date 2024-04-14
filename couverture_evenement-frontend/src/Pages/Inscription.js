@@ -18,17 +18,17 @@ export default function Inscription() {
     const previewImage = (event) => {
         const file = event.target.files[0];
         setImagePreview(file);
-        if (file) {
-            const reader = new FileReader();
+        // if (file) {
+        //     const reader = new FileReader();
 
-            reader.onload = function(e) {
-                setImagePreview(e.target.result);
-            }
+        //     reader.onload = function(e) {
+        //         setImagePreview(e.target.result);
+        //     }
 
-            reader.readAsDataURL(file);
-        } else {
-            setImagePreview(null);
-        }
+        //     reader.readAsDataURL(file);
+        // } else {
+        //     setImagePreview(null);
+        // }
     }
 
     const handleOnChange = (event) => {
@@ -47,8 +47,8 @@ export default function Inscription() {
         fData.append('sexe', formData.sexe);
         fData.append('mail', formData.mail);
         fData.append('password', formData.password);
-        console.log(fData);
-        axios.post(SERVER_URL+`utilisateur/inscriptionClient`,fData)
+        console.log(imagePreview);
+        axios.post(SERVER_URL+`utilisateur/inscriptionClient`,formData)
             .then(response=>{
             if (response.ok) {
                 const userData = response.json();
@@ -109,7 +109,7 @@ export default function Inscription() {
             </div>
                     {/* <Link to="#" className="inscription-link"> S'inscrire →</Link> */}
             </div>
-                <form className="inscription-form">
+                <form className="inscription-form" enctype="multipart/form-data">
                     <div className="inscription-left">
                         <div className="inscription-profile">
                             <label className="inscription-profile-label">Photo de Profil</label>
@@ -142,7 +142,6 @@ export default function Inscription() {
                                 {/* Options pour sélectionner le sexe */}
                                 <label><input type="radio" name="sexe" value="homme" onChange={handleOnChange} /> Homme</label>
                                 <label><input type="radio" name="sexe" value="femme" onChange={handleOnChange} /> Femme</label>
-                                <label><input type="radio" name="sexe" value="other" onChange={handleOnChange} /> Autre</label>
                             </div>
                         </div>
                         <div className="inscription-email">
