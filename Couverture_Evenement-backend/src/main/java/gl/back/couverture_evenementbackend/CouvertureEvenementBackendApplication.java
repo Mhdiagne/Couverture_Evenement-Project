@@ -92,29 +92,29 @@ public class CouvertureEvenementBackendApplication implements CommandLineRunner 
 		Evenement evenement1 = new Evenement();
 		evenement1.setNom("Conférence sur l'environnement");evenement1.setTypeEvenement("Conférence");
 		evenement1.setArchive(true);evenement1.setDateEvenement("2024-04-15");evenement1.setDuree(120);
-		evenement1.setUser(utilisateur1);
+
 
 		Evenement evenement2 = new Evenement();
 		evenement2.setNom("Séminaire de formation");evenement2.setTypeEvenement("Formation");evenement2.setArchive(false);
 		evenement2.setDateEvenement("2024-05-20");evenement2.setDuree(180);evenement2.setPrestations(prestations);
-		evenement2.setUser(utilisateur3);
+
 
 		Evenement evenement3 = new Evenement();
 		evenement3.setNom("Soirée de gala");evenement3.setTypeEvenement("Soirée");evenement3.setArchive(false);
 		evenement3.setDateEvenement("2024-06-30");evenement3.setDuree(240);
-		evenement3.setUser(utilisateur3);
+
 
 		Evenement evenement4 = new Evenement();
 		evenement4.setNom("Tournoi de tennis");evenement4.setTypeEvenement("Sport");
 		evenement4.setArchive(true);
 		evenement4.setDateEvenement("2024-07-10");evenement4.setDuree(300);
 		evenement4.setPrestations(prestations);
-		evenement4.setUser(utilisateur1);
+
 
 		Evenement evenement5 = new Evenement();
 		evenement5.setNom("Exposition d'art contemporain");evenement5.setTypeEvenement("Exposition");
 		evenement5.setArchive(true);
-		evenement5.setDateEvenement("2024-08-25");evenement5.setDuree(150);evenement5.setUser(utilisateur3);
+		evenement5.setDateEvenement("2024-08-25");evenement5.setDuree(150);
 		evenementRepository.saveAll(Arrays.asList(evenement1,evenement2,evenement3,evenement4,evenement5));
 
 		Prestation prestation1 = new Prestation();prestation1.setLibelle(" Restauration ");
