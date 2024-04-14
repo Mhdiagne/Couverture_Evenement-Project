@@ -33,6 +33,9 @@ public class EvenementService {
     public List<Evenement> getEvenementsArchives() {
         return evenementRepository.findByArchiveTrue();
     }
+    public List<Evenement> getEvenementsArchivesMensuels() {
+        return evenementRepository.findByArchiveTrueMonth();
+    }
 
     public List<Evenement> getAllEvenement() {
         return evenementRepository.findAll();
@@ -71,10 +74,7 @@ public class EvenementService {
         }
     }
 
-/**
- * @addPrestationToEvenement
- * 
- * */
+
     public void addPrestationToEvenement(Long idE, Long idP) {
         Evenement event = getOneEvenement(idE);
         Prestation service = prestationService.getOnePrestation(idP);

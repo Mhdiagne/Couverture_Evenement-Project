@@ -13,6 +13,9 @@ public interface EvenementRepository extends JpaRepository<Evenement, Long> {
     @Query("SELECT e FROM Evenement e WHERE e.archive = true")
     List<Evenement> findByArchiveTrue();
 
+    @Query("SELECT e FROM Evenement e WHERE e.archive = true and MONTH(e.dateEvenement) = MONTH(CURRENT_DATE) and  + YEAR(e.dateEvenement) = YEAR(CURRENT_DATE)")
+    List<Evenement> findByArchiveTrueMonth();
+
     @Query("SELECT e FROM Evenement e JOIN e.users u WHERE u.id_user = :userId")
     List<Evenement> findByUserId(@Param("userId") Long userId);
 

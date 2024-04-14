@@ -38,6 +38,11 @@ public class EvenementController {
 
         return evenementService.getEvenementsArchives();
     }
+    @GetMapping("/archives-mensuels")
+    public List<Evenement> genererRapportEvenementsArchivesMensuels() {
+
+        return evenementService.getEvenementsArchivesMensuels();
+    }
     @GetMapping("/{id}")
     public Evenement getOneEvenement(@PathVariable Long id) {
         return evenementService.getOneEvenement(id);

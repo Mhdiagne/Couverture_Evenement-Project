@@ -38,7 +38,7 @@ public class PdfGeneratorService {
                 table.addCell(String.valueOf(evenement.getId_Evenement()));
                 table.addCell(evenement.getNom());
                 table.addCell(evenement.getTypeEvenement());
-                table.addCell(evenement.getDateEvenement());
+                table.addCell(String.valueOf(evenement.getDateEvenement()));
                 table.addCell(String.valueOf(evenement.getDuree()));
                 //                table.addCell(evenement.getUser().getPrenom() + " " + evenement.getUser().getNom());
 
