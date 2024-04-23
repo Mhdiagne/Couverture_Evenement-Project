@@ -100,12 +100,26 @@ const Rapports = () => {
     return (
         <div>
             <PrimarySearchAppBar/>
-            <div className="">
+            <div className="contenaire">
                 <SidebarDashBord />
+<br/>
+
+
                 <div className="content-container" style={{ width: '100%', overflowX: 'auto' }}>
                     <div style={{ display: 'flex', alignItems: 'center', marginLeft: '3cm' }}>
+                    <br/>
+<br/>
                         <Typography variant="h5" id="special1">
                             Generations de Rapports Mensuels
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
                         </Typography>
                         <IconButton onClick={handleGenerateReport} aria-label="generate report">
                             <PictureAsPdfIcon sx={{ color: "red" }} />

@@ -37,7 +37,7 @@ const AllEvent = () => {
         {
             field: 'lieu',
             headerName: 'Lieu',
-            width: 200,
+            width: 100,
             editable: false,
         },
         {
