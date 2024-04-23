@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import logo from '../assets/img/Logo_uasz-bg-transparent.png';
 import '../assets/css/inscription.css'; 
 import { SERVER_URL } from '../constante';
@@ -18,17 +18,17 @@ export default function Inscription() {
     const previewImage = (event) => {
         const file = event.target.files[0];
         setImagePreview(file);
-        // if (file) {
-        //     const reader = new FileReader();
+        if (file) {
+            const reader = new FileReader();
 
-        //     reader.onload = function(e) {
-        //         setImagePreview(e.target.result);
-        //     }
+            reader.onload = function(e) {
+                setImagePreview(e.target.result);
+            }
 
-        //     reader.readAsDataURL(file);
-        // } else {
-        //     setImagePreview(null);
-        // }
+            reader.readAsDataURL(file);
+        } else {
+            setImagePreview(null);
+        }
     }
 
     const handleOnChange = (event) => {
@@ -158,7 +158,7 @@ export default function Inscription() {
                         </div>
                     </div>
                     {/* Autres champs du formulaire */}
-                    <button className="inscription-button" onClick={()=>posterUser()}>S'inscrire →</button>
+                    <button className="inscription-button" onClick={()=>{alert("Votre a reussi avec succes ! Appuyer su OK pour continuer"); return <Navigate to={"/"}/>}}>S'inscrire →</button>
                    
                 </form>
             </div>

@@ -37,14 +37,25 @@ const Rapports = () => {
         },
         {
             field: 'user.prenom',
+
             headerName: 'Client',
             width: 150,
             editable: false,
+
+            headerName: 'Client - Agent',
+            width: 250,
+            editable: false,
+            renderCell: (params) => {
+              return params.row.users.map(user => user.prenom).join(', ');
+          }
         },
         {
             field: 'prestations',
             headerName: 'Prestation',
+
             width: 200,
+            width: 250,
+
             editable: false,
             renderCell: (params) => {
                 return params.row.prestations.map(prestation => prestation.libelle).join(', ');
@@ -53,7 +64,11 @@ const Rapports = () => {
         {
             field: 'prestataires',
             headerName: 'Prestataire',
+
             width: 200,
+
+            width: 250,
+
             editable: false,
             renderCell: (params) => {
                 return params.row.prestataires.map(prestataire => prestataire.nom).join(', ');
@@ -89,13 +104,17 @@ const Rapports = () => {
               event.nom,
               event.typeEvenement,
               event.dateEvenement,
+
               event.user ? event.user.prenom : '', // Vérifiez si user existe avant d'accéder à prenom
+
+              event.users.map(user => user.prenom).join(', '),
               event.prestations.map(prestation => prestation.libelle).join(', '),
               event.prestataires.map(prestataire => prestataire.nom).join(', ')
           ])
       });
       doc.save('rapport_evenements-mensuels.pdf');
-    };
+  };
+  
 
     return (
         <div>
