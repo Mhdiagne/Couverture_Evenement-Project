@@ -1,4 +1,4 @@
-import "../../assets/css/styleDashbord.css"
+import "../../assets/css/styleDashbord.css";
 import React ,{ useEffect, useState } from 'react';
 import PrimarySearchAppBar from "./PrimarySearchAppBar";
 import SidebarDashBord from "./SidebarDashbord";
